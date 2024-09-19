@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://u26eun0ik6qk"]
+
+[ext_resource type="Script" path="res://scenes/managers/enemy_manager.gd" id="1_5pbhv"]
+[ext_resource type="PackedScene" uid="uid://qvsgwr7r347h" path="res://scenes/characters/enemy_spider/enemy_spider.tscn" id="2_g6pn0"]
+
+[node name="EnemyManager" type="Node"]
+script = ExtResource("1_5pbhv")
+enemy_spider = ExtResource("2_g6pn0")
+
+[node name="SpawnTimer" type="Timer" parent="."]

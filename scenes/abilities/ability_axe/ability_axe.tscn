@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://cx5tdhwouu14x"]
+
+[ext_resource type="Script" path="res://scenes/abilities/ability_axe/ability_axe.gd" id="1_e5ken"]
+[ext_resource type="Texture2D" uid="uid://dqevvvjquj5vr" path="res://scenes/abilities/ability_axe/axe.png" id="1_pavcq"]
+[ext_resource type="Script" path="res://scenes/components/hitbox_component.gd" id="2_yv4hp"]
+
+[sub_resource type="Animation" id="Animation_nt3aw"]
+resource_name = "default"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_2e82d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xyful"]
+_data = {
+"RESET": SubResource("Animation_2e82d"),
+"default": SubResource("Animation_nt3aw")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ejjoh"]
+
+[node name="AbilityAxe" type="Node2D"]
+script = ExtResource("1_e5ken")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xyful")
+}
+autoplay = "default"
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("2_yv4hp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_ejjoh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pavcq")

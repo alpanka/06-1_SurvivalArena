@@ -1,0 +1,8 @@
+2024.09.05
+
+Create a Complete 2D Survivors Style Game in Godot 4
+Firebelley Games
+
+https://www.udemy.com/course/create-a-complete-2d-arena-survival-roguelike-game-in-godot-4
+
+ASSETS

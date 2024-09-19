@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://qvsgwr7r347h"]
+
+[ext_resource type="Script" path="res://scenes/characters/enemy_spider/enemy_spider.gd" id="1_htoa4"]
+[ext_resource type="PackedScene" uid="uid://bj0k1mylrpyiw" path="res://scenes/components/health_component.tscn" id="2_32lx5"]
+[ext_resource type="Texture2D" uid="uid://bk6pkvww1tbk" path="res://scenes/characters/enemy_spider/enemy_spider.png" id="2_vqgeh"]
+[ext_resource type="PackedScene" uid="uid://b3kjrahf38hv8" path="res://scenes/components/vial_drop_component.tscn" id="3_aefrj"]
+[ext_resource type="PackedScene" uid="uid://ghkqn5e263hr" path="res://scenes/components/hurtbox_component.tscn" id="4_p0l8d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ba1qb"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ivs0u"]
+radius = 9.0
+
+[node name="EnemySpider" type="CharacterBody2D" node_paths=PackedStringArray("health_component") groups=["enemy"]]
+collision_layer = 16
+collision_mask = 17
+motion_mode = 1
+script = ExtResource("1_htoa4")
+health_component = NodePath("Managers/HealthComponent")
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="HealthComponent" parent="Managers" instance=ExtResource("2_32lx5")]
+
+[node name="VialDropComponent" parent="Managers" node_paths=PackedStringArray("health_component") instance=ExtResource("3_aefrj")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_p0l8d")]
+collision_layer = 4
+health_component = NodePath("../Managers/HealthComponent")
+
+[node name="CollisionShape2D" parent="HurtboxComponent" index="0"]
+shape = SubResource("CircleShape2D_ba1qb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ivs0u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vqgeh")
+region_rect = Rect2(32, 160, 16, 16)
+
+[editable path="HurtboxComponent"]
