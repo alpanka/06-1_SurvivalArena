@@ -24,8 +24,8 @@ func _process(_delta: float) -> void:
 	if move_sign != 0:
 		visuals.scale.x = move_sign
 
-	# Face the player.
-	self.look_at(player_node.global_position)
+	## Face the player.
+	#self.look_at(player_node.global_position)
 
 
 func _initialize_enemy():

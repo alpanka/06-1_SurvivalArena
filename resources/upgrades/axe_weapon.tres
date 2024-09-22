@@ -7,5 +7,6 @@
 script = ExtResource("1_hqru5")
 ability_weapon_controller = ExtResource("1_drlxi")
 id = "axe_weapon"
+max_quantity = 1
 name = "Axe"
 description = "Swinning axe"

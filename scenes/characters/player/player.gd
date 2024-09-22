@@ -4,6 +4,8 @@ extends CharacterBody2D
 @onready var health_component: HealthComponent = $Managers/HealthComponent
 @onready var damage_cooldown: Timer = $Managers/DamageCooldown
 @onready var health_bar: ProgressBar = $HealthBar
+@onready var visuals: Node2D = $Visuals
+@onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
 
 
 var direction: Vector2
@@ -23,7 +25,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	direction = _get_movement_vector()
 	target_velocity = direction * speed_current
-	smoothing_multiplier = 1 - exp(-delta * smoothing)
+	smoothing_multiplier = 1 - exp(- smoothing * delta)
 	
 	if direction:
 		velocity = velocity.lerp(target_velocity, smoothing_multiplier)
@@ -31,14 +33,25 @@ func _process(delta: float) -> void:
 		velocity = velocity.lerp(Vector2.ZERO, 2 * smoothing_multiplier)
 	
 	move_and_slide()
+	
+	# Play animation based on direction
+	if direction:
+		$AnimationPlayer.play("walk")
+	else:
+		$AnimationPlayer.play("RESET")
+	
+	# Flip Visuals/Sprite2D based on direction.x
+	var move_sign: int = sign(direction.x)
+	if move_sign != 0:
+		visuals.scale.x = move_sign
 
 
 func _initialize_player() -> void:
 	speed_current = speed_init
 	_update_health_bar()
 	
-	$DamageArea.body_entered.connect(_on_enemy_body_entered)
-	$DamageArea.body_exited.connect(_on_enemy_body_exited)
+	hurtbox_component.body_entered.connect(_on_enemy_body_entered)
+	hurtbox_component.body_exited.connect(_on_enemy_body_exited)
 	damage_cooldown.timeout.connect(_on_damage_cooldown)
 	health_component.health_changed.connect(_on_health_changed)
 	Signals.ability_upgrade_added.connect(_on_ability_upgrade_added)

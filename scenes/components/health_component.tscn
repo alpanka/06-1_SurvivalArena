@@ -4,3 +4,6 @@
 
 [node name="HealthComponent" type="Node"]
 script = ExtResource("1_rwpgu")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 0.25

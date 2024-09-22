@@ -15,6 +15,8 @@ func _apply_upgrade(upgrade: AbilityUpgrade):
 	# Check if we already have this upgrade
 	var upgrade_exists = owned_upgrades.has(upgrade.id)
 	
+	# Update "owned_upgrades" dictionary.
+	# Add keys if not already in the dict.
 	if not upgrade_exists:
 		owned_upgrades[upgrade.id] = {
 			"resource": upgrade,
@@ -22,6 +24,16 @@ func _apply_upgrade(upgrade: AbilityUpgrade):
 		}
 	else:
 		owned_upgrades[upgrade.id]["quantity"] += 1
+	
+	# Remove an upgrade if max allowable quantity is reached
+	if upgrade.max_quantity > 0:
+		var current_quantity: int = owned_upgrades[upgrade.id]["quantity"]
+		
+		# Filter out quantity limit reached upgrade 
+		if current_quantity == upgrade.max_quantity:
+			upgrade_array = upgrade_array.filter(
+				func(pool_upgrade):
+					return pool_upgrade.id != upgrade.id)
 	
 	# Emit up to date ability dict.
 	Signals.ability_upgrade_added.emit(upgrade, owned_upgrades)
@@ -35,6 +47,10 @@ func _pick_upgrades() -> Array[AbilityUpgrade]:
 	var filtered_upgrades = upgrade_array.duplicate()
 	
 	for i in 2:
+		# Stop if filtered upgrades array is empty
+		if filtered_upgrades.size() == 0:
+			break
+		
 		# Pick a random upgrade from the array
 		var chosen_upgrade: AbilityUpgrade = filtered_upgrades.pick_random()
 		chosen_upgrades.append(chosen_upgrade)
@@ -43,7 +59,6 @@ func _pick_upgrades() -> Array[AbilityUpgrade]:
 		filtered_upgrades = filtered_upgrades.filter(
 			func(upgrade): return upgrade.id != chosen_upgrade.id)
 	
-	#BUG duplicated upgrades on the upgrade screen
 	return chosen_upgrades
 
 
