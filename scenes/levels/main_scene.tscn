@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://di4adv6b2242f"]
+[gd_scene load_steps=17 format=4 uid="uid://di4adv6b2242f"]
 
 [ext_resource type="Script" path="res://scenes/levels/main_scene.gd" id="1_jgni3"]
 [ext_resource type="PackedScene" uid="uid://dxwbl8lyxg6jw" path="res://scenes/levels/game_camera.tscn" id="1_kqs5l"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://b08l87ocyujfy" path="res://scenes/managers/arena_time_manager.tscn" id="6_gd3xp"]
 [ext_resource type="PackedScene" uid="uid://6gepvso5wwf4" path="res://scenes/pickup/vial_experience.tscn" id="7_2ym2c"]
 [ext_resource type="PackedScene" uid="uid://ok0kd23rqmq4" path="res://scenes/managers/upgrade_manager.tscn" id="7_dm6d2"]
-[ext_resource type="PackedScene" uid="uid://ccjb2ido0isbj" path="res://scenes/characters/enemy_wizard/enemy_wizard.tscn" id="8_0fjjm"]
 [ext_resource type="PackedScene" uid="uid://qvsgwr7r347h" path="res://scenes/characters/enemy_spider/enemy_spider.tscn" id="8_3nkbk"]
 [ext_resource type="Script" path="res://resources/upgrades/_ability_upgrade.gd" id="8_qfhf8"]
 [ext_resource type="Resource" uid="uid://cd6lptok45p0w" path="res://resources/upgrades/sword_rate.tres" id="9_tdqt0"]
@@ -41,7 +40,7 @@ rotation_smoothing_enabled = true
 
 [node name="EnemyManager" parent="Managers" node_paths=PackedStringArray("arena_timer_manager") instance=ExtResource("2_mn2oi")]
 arena_timer_manager = NodePath("../ArenaTimeManager")
-enemy_spider = ExtResource("8_0fjjm")
+spawn_timeout = 1.0
 
 [node name="ExperienceManager" parent="Managers" instance=ExtResource("5_64v5b")]
 

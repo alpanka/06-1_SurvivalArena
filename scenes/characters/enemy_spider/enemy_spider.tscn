@@ -94,11 +94,11 @@ _data = {
 "walk": SubResource("Animation_jn6w4")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ba1qb"]
-radius = 12.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_ivs0u"]
 radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ba1qb"]
+radius = 12.0
 
 [node name="EnemySpider" type="CharacterBody2D" node_paths=PackedStringArray("velocity_component") groups=["enemy"]]
 collision_layer = 16
@@ -112,6 +112,9 @@ libraries = {
 "": SubResource("AnimationLibrary_d78ds")
 }
 autoplay = "walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ivs0u")
 
 [node name="Managers" type="Node2D" parent="."]
 
@@ -128,13 +131,6 @@ health_component = NodePath("../HealthComponent")
 [node name="VelocityComponent" type="Node" parent="Managers"]
 script = ExtResource("5_rss4t")
 
-[node name="Visuals" type="Node2D" parent="."]
-rotation = -1.57079
-
-[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-texture = ExtResource("2_vqgeh")
-region_rect = Rect2(32, 160, 16, 16)
-
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_p0l8d")]
 collision_layer = 4
 health_component = NodePath("../Managers/HealthComponent")
@@ -142,7 +138,11 @@ health_component = NodePath("../Managers/HealthComponent")
 [node name="CollisionShape2D" parent="HurtboxComponent" index="0"]
 shape = SubResource("CircleShape2D_ba1qb")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ivs0u")
+[node name="Visuals" type="Node2D" parent="."]
+rotation = -1.57079
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("2_vqgeh")
+region_rect = Rect2(32, 160, 16, 16)
 
 [editable path="HurtboxComponent"]
