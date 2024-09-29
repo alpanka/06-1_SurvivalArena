@@ -36,6 +36,10 @@ layer_entities=""
 layer_foreground=""
 layer_ui=""
 
+[gui]
+
+theme/custom="res://resources/theme/game_theme.tres"
+
 [input]
 
 ui_left={
