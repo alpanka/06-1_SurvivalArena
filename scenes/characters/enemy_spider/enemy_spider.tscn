@@ -130,6 +130,8 @@ health_component = NodePath("../HealthComponent")
 
 [node name="VelocityComponent" type="Node" parent="Managers"]
 script = ExtResource("5_rss4t")
+max_speed = 40
+acceleration = 8.0
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_p0l8d")]
 collision_layer = 4

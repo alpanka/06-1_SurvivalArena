@@ -39,3 +39,7 @@ func _accelerate(_target_dir: Vector2):
 	var smoothing: float = 1 - exp(- acceleration * get_process_delta_time())
 	
 	velocity = velocity.lerp(target_velocity, smoothing)
+
+
+func _decelerate() -> void:
+	_accelerate(Vector2.ZERO)

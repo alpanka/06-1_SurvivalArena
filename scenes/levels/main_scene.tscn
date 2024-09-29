@@ -40,7 +40,6 @@ rotation_smoothing_enabled = true
 
 [node name="EnemyManager" parent="Managers" node_paths=PackedStringArray("arena_timer_manager") instance=ExtResource("2_mn2oi")]
 arena_timer_manager = NodePath("../ArenaTimeManager")
-spawn_timeout = 1.0
 
 [node name="ExperienceManager" parent="Managers" instance=ExtResource("5_64v5b")]
 
