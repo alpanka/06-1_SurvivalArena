@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://qvsgwr7r347h"]
+[gd_scene load_steps=15 format=3 uid="uid://qvsgwr7r347h"]
 
 [ext_resource type="Script" path="res://scenes/characters/enemy_spider/enemy_spider.gd" id="1_htoa4"]
 [ext_resource type="PackedScene" uid="uid://bj0k1mylrpyiw" path="res://scenes/components/health_component.tscn" id="2_32lx5"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cbyqf851d0x7c" path="res://scenes/components/death_component.tscn" id="4_3qfml"]
 [ext_resource type="PackedScene" uid="uid://ghkqn5e263hr" path="res://scenes/components/hurtbox_component.tscn" id="4_p0l8d"]
 [ext_resource type="Script" path="res://scenes/components/velocity_component.gd" id="5_rss4t"]
+[ext_resource type="Script" path="res://scenes/components/hit_flash_component.gd" id="6_brspj"]
+[ext_resource type="Material" uid="uid://b8auiu54wbuya" path="res://resources/shaders/hit_flash_shader_material.tres" id="7_i1ow2"]
 
 [sub_resource type="Animation" id="Animation_8bgha"]
 length = 0.001
@@ -132,6 +134,12 @@ health_component = NodePath("../HealthComponent")
 script = ExtResource("5_rss4t")
 max_speed = 40
 acceleration = 8.0
+
+[node name="HitFlashComponent" type="Node" parent="Managers" node_paths=PackedStringArray("health_component", "sprite")]
+script = ExtResource("6_brspj")
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../../Visuals/Sprite2D")
+hit_flash_material = ExtResource("7_i1ow2")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_p0l8d")]
 collision_layer = 4

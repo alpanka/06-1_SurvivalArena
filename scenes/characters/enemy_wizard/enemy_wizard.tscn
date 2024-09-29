@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ccjb2ido0isbj"]
+[gd_scene load_steps=15 format=3 uid="uid://ccjb2ido0isbj"]
 
 [ext_resource type="Script" path="res://scenes/characters/enemy_wizard/enemy_wizard.gd" id="1_l0e8s"]
 [ext_resource type="PackedScene" uid="uid://bj0k1mylrpyiw" path="res://scenes/components/health_component.tscn" id="2_ntk0p"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cbyqf851d0x7c" path="res://scenes/components/death_component.tscn" id="4_t6cr1"]
 [ext_resource type="Script" path="res://scenes/components/velocity_component.gd" id="5_qof22"]
 [ext_resource type="Texture2D" uid="uid://cl8focepfriaq" path="res://scenes/characters/enemy_wizard/enemy_wizard.png" id="6_0bbdc"]
+[ext_resource type="Script" path="res://scenes/components/hit_flash_component.gd" id="6_48ou7"]
+[ext_resource type="Material" uid="uid://b8auiu54wbuya" path="res://resources/shaders/hit_flash_shader_material.tres" id="7_apo0x"]
 [ext_resource type="PackedScene" uid="uid://ghkqn5e263hr" path="res://scenes/components/hurtbox_component.tscn" id="7_d6r2c"]
 
 [sub_resource type="Animation" id="Animation_8bgha"]
@@ -129,6 +131,12 @@ health_component = NodePath("../HealthComponent")
 script = ExtResource("5_qof22")
 max_speed = 50
 acceleration = 8.0
+
+[node name="HitFlashComponent" type="Node" parent="Managers" node_paths=PackedStringArray("health_component", "sprite")]
+script = ExtResource("6_48ou7")
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../../Visuals/Sprite2D")
+hit_flash_material = ExtResource("7_apo0x")
 
 [node name="Visuals" type="Node2D" parent="."]
 
