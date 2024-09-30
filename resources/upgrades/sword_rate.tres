@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_4aygy")
 id = "sword_rate"
-max_quantity = 5
+max_quantity = 0
 name = "Sword Rate"
 description = "Increase sword rate"

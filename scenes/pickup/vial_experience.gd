@@ -4,6 +4,8 @@ extends Node2D
 @onready var collision_shape: CollisionShape2D = $PickupArea/CollisionShape2D
 @onready var sprite: Sprite2D = $Sprite2D
 
+@export var experience: float = 1.0
+
 var player_node: CharacterBody2D
 
 
@@ -51,5 +53,5 @@ func _tween_collect(percent: float, start_pos: Vector2) -> void:
 
 # Final method upon collection
 func _vial_collected() -> void:
-	Signals.exp_vial_collected.emit(1.0)
+	Signals.exp_vial_collected.emit(experience)
 	queue_free()

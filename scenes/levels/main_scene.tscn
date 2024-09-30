@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://di4adv6b2242f"]
+[gd_scene load_steps=14 format=4 uid="uid://di4adv6b2242f"]
 
 [ext_resource type="Script" path="res://scenes/levels/main_scene.gd" id="1_jgni3"]
 [ext_resource type="PackedScene" uid="uid://dxwbl8lyxg6jw" path="res://scenes/levels/game_camera.tscn" id="1_kqs5l"]
@@ -13,9 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://6gepvso5wwf4" path="res://scenes/pickup/vial_experience.tscn" id="7_2ym2c"]
 [ext_resource type="PackedScene" uid="uid://ok0kd23rqmq4" path="res://scenes/managers/upgrade_manager.tscn" id="7_dm6d2"]
 [ext_resource type="PackedScene" uid="uid://qvsgwr7r347h" path="res://scenes/characters/enemy_spider/enemy_spider.tscn" id="8_3nkbk"]
-[ext_resource type="Script" path="res://resources/upgrades/_ability_upgrade.gd" id="8_qfhf8"]
-[ext_resource type="Resource" uid="uid://cd6lptok45p0w" path="res://resources/upgrades/sword_rate.tres" id="9_tdqt0"]
-[ext_resource type="Resource" uid="uid://khy7gfuoquue" path="res://resources/upgrades/axe_weapon.tres" id="12_f5sqb"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_jgni3")
@@ -44,7 +41,6 @@ arena_timer_manager = NodePath("../ArenaTimeManager")
 [node name="ExperienceManager" parent="Managers" instance=ExtResource("5_64v5b")]
 
 [node name="UpgradeManager" parent="Managers" node_paths=PackedStringArray("experience_manager") instance=ExtResource("7_dm6d2")]
-upgrade_array = Array[ExtResource("8_qfhf8")]([ExtResource("12_f5sqb"), ExtResource("9_tdqt0"), ExtResource("9_tdqt0"), ExtResource("12_f5sqb")])
 experience_manager = NodePath("../ExperienceManager")
 
 [node name="Level01" type="Node2D" parent="."]
@@ -68,12 +64,19 @@ position = Vector2(430, 361)
 
 [node name="VialExperience1" parent="Entities" instance=ExtResource("7_2ym2c")]
 position = Vector2(396, 240)
+experience = 10.0
 
 [node name="VialExperience2" parent="Entities" instance=ExtResource("7_2ym2c")]
-position = Vector2(544, 319)
+position = Vector2(472, 239)
+experience = 10.0
 
 [node name="VialExperience3" parent="Entities" instance=ExtResource("7_2ym2c")]
-position = Vector2(542, 196)
+position = Vector2(555, 239)
+experience = 10.0
+
+[node name="VialExperience4" parent="Entities" instance=ExtResource("7_2ym2c")]
+position = Vector2(651, 241)
+experience = 10.0
 
 [node name="EnemySpider" parent="Entities" instance=ExtResource("8_3nkbk")]
 position = Vector2(364, 450)
