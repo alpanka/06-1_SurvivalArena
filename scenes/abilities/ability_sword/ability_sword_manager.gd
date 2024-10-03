@@ -8,17 +8,18 @@ extends Node
 
 var spawn_timer: float = 1.5
 var attack_range: float = 150
-var damage_amount: float = 5 # Source of damage amount
+var base_damage_amount: float = 5 # Source of damage amount
+var damage_addition_ratio: float = 1
 
 var enemies: Array
 var player_node: CharacterBody2D
 
 
 func _ready() -> void:
-	_manager_initialize()
+	_initialize_manager()
 
 
-func _manager_initialize():
+func _initialize_manager():
 	# Get player node
 	player_node = get_tree().get_first_node_in_group("player")
 	# Timer setup
@@ -75,15 +76,18 @@ func _on_timer_timeout() -> void:
 	layer_foreground.add_child(sword_instance)
 	
 	# Set its damage
-	sword_instance.hitbox_component.damage_amount = damage_amount
+	sword_instance.hitbox_component.damage_amount = base_damage_amount * damage_addition_ratio
 
 
+# Update upgrade stats based on upgrade selected.
 func _on_upgrade_received(ability: AbilityUpgrade, owned_upgrades: Dictionary):
-	if ability.id != "sword_rate":
-		return
-
-	var upgrd_ratio: float = 1 - owned_upgrades["sword_rate"]["quantity"] * 0.1
-	
-	$Timer.wait_time = spawn_timer * upgrd_ratio
-	$Timer.start()
-	#print($Timer.wait_time)
+	if ability.id == "sword_rate":
+		# Check how many of this upgrades we own.
+		var upgrd_ratio: float = 1 - owned_upgrades["sword_rate"]["quantity"] * 0.1
+		
+		$Timer.wait_time = spawn_timer * upgrd_ratio
+		$Timer.start()
+	elif ability.id == "sword_damage":
+		# Check how many of this upgrades we own.
+		# Update damage increase based on quantity.
+		damage_addition_ratio = 1 + owned_upgrades["sword_damage"]["quantity"] * 0.1

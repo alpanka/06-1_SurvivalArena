@@ -29,5 +29,11 @@ func _handle_floating_damage_text(damage) -> void:
 	
 	floating_text.global_position = global_position + (Vector2.UP * 16)
 	layer_ui.add_child(floating_text)
-	floating_text.initialize_floating(str(damage))
+	
+	# Format damage decimal
+	var string_format = "%0.1f"
+	if round(damage) == damage:
+		string_format = "%0.0f"
+	floating_text.initialize_floating(string_format % damage)
+	#floating_text.initialize_floating(str(damage))
 	
