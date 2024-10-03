@@ -6,15 +6,15 @@ extends CharacterBody2D
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var visuals: Node2D = $Visuals
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
-
+@onready var velocity_component: VelocityComponent = $Managers/VelocityComponent
 
 var direction: Vector2
-var speed_current: float
-var speed_init: float = 100
+#var speed_current: float
+var speed_init: float
 
-var smoothing: float = 10
-var smoothing_multiplier: float
-var target_velocity: Vector2
+#var smoothing: float = 10
+#var smoothing_multiplier: float
+#var target_velocity: Vector2
 
 var damaging_bodies: int = 0
 
@@ -23,16 +23,18 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	#target_velocity = direction * speed_current
+	#smoothing_multiplier = 1 - exp(- smoothing * delta)
+	#
+	#if direction:
+		#velocity = velocity.lerp(target_velocity, smoothing_multiplier)
+	#else:
+		#velocity = velocity.lerp(Vector2.ZERO, 2 * smoothing_multiplier)
+	#
+	#move_and_slide()
 	direction = _get_movement_vector()
-	target_velocity = direction * speed_current
-	smoothing_multiplier = 1 - exp(- smoothing * delta)
-	
-	if direction:
-		velocity = velocity.lerp(target_velocity, smoothing_multiplier)
-	else:
-		velocity = velocity.lerp(Vector2.ZERO, 2 * smoothing_multiplier)
-	
-	move_and_slide()
+	velocity_component._accelerate(direction)
+	velocity_component.chase_player(self)
 	
 	# Play animation based on direction
 	if direction:
@@ -47,7 +49,7 @@ func _process(delta: float) -> void:
 
 
 func _initialize_player() -> void:
-	speed_current = speed_init
+	speed_init = velocity_component.max_speed
 	_update_health_bar()
 	
 	hurtbox_component.body_entered.connect(_on_enemy_body_entered)
@@ -89,6 +91,7 @@ func _on_damage_cooldown():
 
 func _on_health_changed():
 	_update_health_bar()
+	Signals.player_damaged.emit()
 
 
 func _update_health_bar() -> void:
@@ -96,8 +99,10 @@ func _update_health_bar() -> void:
 
 
 func _on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, owned_upgrades: Dictionary) -> void:
-	if ability_upgrade is not AbilityUpgradeWeapon:
-		return
-	
-	var weapon: Node = ability_upgrade.ability_weapon_controller.instantiate()
-	%Abilities.add_child(weapon)
+	# Check if upgrade is a weapon
+	if ability_upgrade is AbilityUpgradeWeapon:
+		var weapon: Node = ability_upgrade.ability_weapon_controller.instantiate()
+		%Abilities.add_child(weapon)
+	elif ability_upgrade.id == Names.player_speed_resource.id:
+		var speed_extra = 0.1 * speed_init * owned_upgrades[Names.player_speed_resource.id]["quantity"]
+		velocity_component.max_speed = speed_init + speed_extra

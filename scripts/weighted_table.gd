@@ -8,7 +8,7 @@ var weight_sum: int = 0
 func add_item(item, weight: int) -> void:
 	items.append({"item": item, "weight": weight})
 	weight_sum += weight
-	print(items)
+	#print(items)
 
 
 ## Return an item that its weight larger then

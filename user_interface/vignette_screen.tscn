@@ -1,0 +1,114 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwpf2r4nnpwtb"]
+
+[ext_resource type="Script" path="res://user_interface/vignette_screen.gd" id="1_arwjj"]
+[ext_resource type="Shader" path="res://resources/shaders/vignette_shader.gdshader" id="1_qk2xn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vwnl4"]
+shader = ExtResource("1_qk2xn")
+shader_parameter/vignette_intensity = 0.6
+shader_parameter/vignette_opacity = 0.1
+shader_parameter/vignette_rgb = Color(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="Animation" id="Animation_uu6tb"]
+resource_name = "got_hit"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/vignette_intensity")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.4),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [0.6, 1.5, 0.6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/vignette_rgb")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.4),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Color(0.247059, 0.14902, 0.192157, 1), Color(0.909804, 0.270588, 0.215686, 1), Color(0.247059, 0.14902, 0.192157, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:material:shader_parameter/vignette_opacity")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.4),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [0.1, 0.2, 0.1]
+}
+
+[sub_resource type="Animation" id="Animation_abvtc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/vignette_intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/vignette_rgb")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.247059, 0.14902, 0.192157, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:material:shader_parameter/vignette_opacity")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vx7kn"]
+_data = {
+"RESET": SubResource("Animation_abvtc"),
+"got_hit": SubResource("Animation_uu6tb")
+}
+
+[node name="VignetteScreen" type="CanvasLayer"]
+script = ExtResource("1_arwjj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_vwnl4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_vx7kn")
+}

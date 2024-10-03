@@ -15,7 +15,7 @@ func _ready() -> void:
 
 
 func take_damage(damage_amount: float):
-	print(owner.name, " ", health_current - damage_amount, " health left!")
+	#print(owner.name, " ", health_current - damage_amount, " health left!")
 	health_current = max(health_current - damage_amount, 0)
 	health_changed.emit()
 	Callable(_check_entity_death).call_deferred()

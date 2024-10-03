@@ -6,7 +6,18 @@ var endgame_type: TYPE
 
 
 func _ready() -> void:
+	_initialize_animation()
 	_initialize_endgame_screen()
+
+
+func _initialize_animation() -> void:
+	%Panel.pivot_offset = %Panel.size / 2
+	
+	var tween = create_tween()
+	tween.tween_property(%Panel, "scale", Vector2.ZERO, 0.0)
+	tween.tween_property(%Panel, "scale", Vector2.ONE, 0.3)\
+	.set_ease(Tween.EASE_OUT)\
+	.set_trans(Tween.TRANS_BACK)
 
 
 func _initialize_endgame_screen() -> void:

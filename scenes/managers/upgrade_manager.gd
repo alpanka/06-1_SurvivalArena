@@ -19,6 +19,7 @@ func _initialize_upgrade_manager() -> void:
 	upgrade_array.add_item(Names.sword_rate_resource, 10)
 	upgrade_array.add_item(Names.sword_damage_rate_resource, 10)
 	upgrade_array.add_item(Names.axe_weapon_resource, 10)
+	upgrade_array.add_item(Names.player_speed_resource, 5)
 
 
 func _apply_upgrade(upgrade: AbilityUpgrade):

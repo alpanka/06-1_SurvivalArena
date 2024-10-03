@@ -19,4 +19,7 @@ extends Node
 ## Axe damage rate resource
 @export var axe_damage_rate_resource: AbilityUpgrade = preload("res://resources/upgrades/axe_damage.tres")
 
+## Player speed upgrade resource
+@export var player_speed_resource: AbilityUpgrade = preload("res://resources/upgrades/player_speed.tres")
+
 #endregion
