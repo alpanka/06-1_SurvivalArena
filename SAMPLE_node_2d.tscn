@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://f8m4s8ahvpuc"]
+
+[ext_resource type="Script" path="res://SAMPLE_node_2d.gd" id="1_irb1x"]
+[ext_resource type="AudioStream" uid="uid://ct7rf67k0ai7u" path="res://assets/file_example_OOG_1MG.ogg" id="2_dsi1x"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_irb1x")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_dsi1x")
