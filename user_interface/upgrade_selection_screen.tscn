@@ -1,12 +1,83 @@
-[gd_scene load_steps=3 format=3 uid="uid://dswy1n50xjecx"]
+[gd_scene load_steps=7 format=3 uid="uid://dswy1n50xjecx"]
 
 [ext_resource type="PackedScene" uid="uid://bxx61qkbmy2n3" path="res://user_interface/upgrade_card_panel.tscn" id="1_aigxt"]
 [ext_resource type="Script" path="res://user_interface/upgrade_selection_screen.gd" id="1_w1rkf"]
+
+[sub_resource type="Animation" id="Animation_caj34"]
+resource_name = "fade_in"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_i87pn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mgtnn"]
+resource_name = "fade_out"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tc3a4"]
+_data = {
+"RESET": SubResource("Animation_i87pn"),
+"fade_in": SubResource("Animation_caj34"),
+"fade_out": SubResource("Animation_mgtnn")
+}
 
 [node name="UpgradeSelectionScreen" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_w1rkf")
 upgrade_card_panel_scene = ExtResource("1_aigxt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_tc3a4")
+}
+autoplay = "fade_in"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.607843, 0.298039, 0.639216, 0.352941)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15

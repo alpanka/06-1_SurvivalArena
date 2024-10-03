@@ -29,5 +29,8 @@ func set_upgrade_panels(upgrades: Array[AbilityUpgrade]):
 # Emit selected upgrade to upgrade_manager then unpause
 func _on_card_selected(upgrade: AbilityUpgrade):
 	upgrade_selected.emit(upgrade)
+	%AnimationPlayer.play("fade_out")
+	await %AnimationPlayer.animation_finished
+
 	get_tree().paused = false
 	queue_free()
