@@ -1,5 +1,5 @@
 ## Piece of card to be displayed on card upgrade screen
-extends Panel
+extends PanelContainer
 
 signal card_selected
 

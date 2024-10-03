@@ -7,4 +7,4 @@ script = ExtResource("1_4aygy")
 id = "sword_rate"
 max_quantity = 0
 name = "Sword Rate"
-description = "Increase sword rate"
+description = "Increase sword spawn rate by 10%"
