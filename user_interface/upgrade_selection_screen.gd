@@ -13,12 +13,17 @@ func _ready() -> void:
 
 
 func set_upgrade_panels(upgrades: Array[AbilityUpgrade]):
-	#print("array: ", upgrades)
+	# Set delay for next card's animation
+	var delay: float = 0.0
+
 	for upgrade in upgrades:
 		var card_panel = upgrade_card_panel_scene.instantiate()
 		card_panel.set_upgrade_labels(upgrade)
 		card_panel.card_selected.connect(_on_card_selected.bind(upgrade))
 		%CardContainer.add_child(card_panel)
+		card_panel.play_in(delay)
+		
+		delay += 0.25
 
 
 # Emit selected upgrade to upgrade_manager then unpause
