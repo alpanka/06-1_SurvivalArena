@@ -1,8 +1,16 @@
 extends Node
 
 @export_subgroup("SCENES")
+
+## Main game scene
+@export var main_game_scene: PackedScene = preload("res://scenes/levels/main_scene.tscn")
+
+## Settings menu scene
+@export var settings_mene_scene: PackedScene = preload("res://user_interface/settings_menu.tscn")
+
 ## Floating Text Scene
 @export var floating_text_scene: PackedScene = preload("res://user_interface/floating_text.tscn")
+
 
 #region UPGRADE RESOURCES
 
