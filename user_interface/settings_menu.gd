@@ -5,9 +5,6 @@ signal back_button_pressed
 var window_mode := DisplayServer.window_get_mode()
 
 
-func _process(delta: float) -> void:
-	print(%MusicSlider.value, " - ", db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("MUSIC"))))
-
 func _ready() -> void:
 	_update_volume_sliders()
 	
@@ -68,6 +65,8 @@ func _on_window_button_pressed() -> void:
 
 
 func _on_back_button_pressed() -> void:
+	SceneTransition.scene_transition()
+	await SceneTransition.transitioned_halfway
 	back_button_pressed.emit()
 
 

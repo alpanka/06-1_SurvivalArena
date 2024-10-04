@@ -8,11 +8,15 @@ func _ready() -> void:
 
 
 func _on_play_button_pressed() -> void:
+	SceneTransition.scene_transition()
+	await SceneTransition.transitioned_halfway
 	get_tree().change_scene_to_packed(Names.main_game_scene)
 
 
 # Launch settings menu
 func _on_settings_button_pressed() -> void:
+	SceneTransition.scene_transition()
+	await SceneTransition.transitioned_halfway
 	var settings_instance = Names.settings_menu_scene.instantiate()
 	get_tree().get_root().add_child(settings_instance)
 	settings_instance.back_button_pressed.connect(_on_settings_menu_exit.bind(settings_instance))

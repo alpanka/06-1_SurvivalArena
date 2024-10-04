@@ -55,6 +55,8 @@ func _on_resume_button_pressed() -> void:
 
 
 func _on_settings_button_pressed() -> void:
+	SceneTransition.scene_transition()
+	await SceneTransition.transitioned_halfway
 	var settings_menu_instance = Names.settings_menu_scene.instantiate()
 	add_child(settings_menu_instance)
 	
@@ -63,6 +65,8 @@ func _on_settings_button_pressed() -> void:
 
 
 func _on_quit_button_pressed() -> void:
+	SceneTransition.scene_transition()
+	await SceneTransition.transitioned_halfway
 	get_tree().paused = false
 	get_tree().change_scene_to_packed(Names.main_menu_scene)
 
