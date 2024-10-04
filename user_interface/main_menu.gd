@@ -13,7 +13,7 @@ func _on_play_button_pressed() -> void:
 
 # Launch settings menu
 func _on_settings_button_pressed() -> void:
-	var settings_instance := Names.settings_mene_scene.instantiate()
+	var settings_instance = Names.settings_menu_scene.instantiate()
 	get_tree().get_root().add_child(settings_instance)
 	settings_instance.back_button_pressed.connect(_on_settings_menu_exit.bind(settings_instance))
 

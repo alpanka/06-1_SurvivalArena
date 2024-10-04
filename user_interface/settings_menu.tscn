@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=4 uid="uid://daffdi60100mp"]
+[gd_scene load_steps=5 format=4 uid="uid://daffdi60100mp"]
 
 [ext_resource type="Script" path="res://user_interface/settings_menu.gd" id="1_ekwr8"]
+[ext_resource type="PackedScene" uid="uid://dwpf2r4nnpwtb" path="res://user_interface/vignette_screen.tscn" id="2_14vhs"]
 [ext_resource type="TileSet" uid="uid://dhai67i6ht0w5" path="res://resources/tiny_dungeon.tres" id="2_f4mc5"]
 [ext_resource type="PackedScene" uid="uid://b3dej0wh58hyg" path="res://user_interface/sound_button.tscn" id="3_fqhb0"]
 
 [node name="MainMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 2
 script = ExtResource("1_ekwr8")
 
 [node name="Arena" type="TileMapLayer" parent="."]
@@ -91,3 +94,5 @@ text = "Fullscreen"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Back"
+
+[node name="VignetteScreen" parent="." instance=ExtResource("2_14vhs")]

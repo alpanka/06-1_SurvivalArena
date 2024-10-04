@@ -96,6 +96,7 @@ _data = {
 }
 
 [node name="VignetteScreen" type="CanvasLayer"]
+layer = 5
 script = ExtResource("1_arwjj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
