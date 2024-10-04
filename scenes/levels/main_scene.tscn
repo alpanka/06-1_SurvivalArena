@@ -65,6 +65,9 @@ y_sort_enabled = true
 unique_name_in_owner = true
 position = Vector2(430, 361)
 
+[node name="EnemySpider" parent="Entities" instance=ExtResource("8_3nkbk")]
+position = Vector2(364, 450)
+
 [node name="VialExperience1" parent="Entities" instance=ExtResource("7_2ym2c")]
 position = Vector2(396, 240)
 experience = 10.0
@@ -80,8 +83,5 @@ experience = 10.0
 [node name="VialExperience4" parent="Entities" instance=ExtResource("7_2ym2c")]
 position = Vector2(651, 241)
 experience = 10.0
-
-[node name="EnemySpider" parent="Entities" instance=ExtResource("8_3nkbk")]
-position = Vector2(364, 450)
 
 [node name="Foreground" type="Node2D" parent="." groups=["layer_foreground"]]

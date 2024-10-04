@@ -92,6 +92,7 @@ func _on_damage_cooldown():
 func _on_health_changed():
 	_update_health_bar()
 	Signals.player_damaged.emit()
+	%RandomAudioPlayerComponent.play_random_audio()
 
 
 func _update_health_bar() -> void:

@@ -1,13 +1,19 @@
-[gd_scene load_steps=15 format=3 uid="uid://qvsgwr7r347h"]
+[gd_scene load_steps=21 format=3 uid="uid://qvsgwr7r347h"]
 
 [ext_resource type="Script" path="res://scenes/characters/enemy_spider/enemy_spider.gd" id="1_htoa4"]
 [ext_resource type="PackedScene" uid="uid://bj0k1mylrpyiw" path="res://scenes/components/health_component.tscn" id="2_32lx5"]
+[ext_resource type="AudioStream" uid="uid://ly3ufeyrymk6" path="res://assets/audio/damaged_enemy/footstep_carpet_000.ogg" id="2_nothn"]
 [ext_resource type="Texture2D" uid="uid://bk6pkvww1tbk" path="res://scenes/characters/enemy_spider/enemy_spider.png" id="2_vqgeh"]
+[ext_resource type="PackedScene" uid="uid://cpoqi6xc52ilj" path="res://scenes/components/random_audio_player_component.tscn" id="3_6ng32"]
 [ext_resource type="PackedScene" uid="uid://b3kjrahf38hv8" path="res://scenes/components/vial_drop_component.tscn" id="3_aefrj"]
 [ext_resource type="PackedScene" uid="uid://cbyqf851d0x7c" path="res://scenes/components/death_component.tscn" id="4_3qfml"]
+[ext_resource type="AudioStream" uid="uid://5budsmq3v6ig" path="res://assets/audio/damaged_enemy/footstep_carpet_001.ogg" id="4_c5ulk"]
 [ext_resource type="PackedScene" uid="uid://ghkqn5e263hr" path="res://scenes/components/hurtbox_component.tscn" id="4_p0l8d"]
 [ext_resource type="Script" path="res://scenes/components/velocity_component.gd" id="5_rss4t"]
+[ext_resource type="AudioStream" uid="uid://daxymwjeng4ra" path="res://assets/audio/damaged_enemy/footstep_carpet_002.ogg" id="5_weowr"]
 [ext_resource type="Script" path="res://scenes/components/hit_flash_component.gd" id="6_brspj"]
+[ext_resource type="AudioStream" uid="uid://bvqmdx073845t" path="res://assets/audio/damaged_enemy/footstep_carpet_003.ogg" id="6_k1bl5"]
+[ext_resource type="AudioStream" uid="uid://b278nkf31i0ll" path="res://assets/audio/damaged_enemy/footstep_carpet_004.ogg" id="7_db823"]
 [ext_resource type="Material" uid="uid://b8auiu54wbuya" path="res://resources/shaders/hit_flash_shader_material.tres" id="7_i1ow2"]
 
 [sub_resource type="Animation" id="Animation_8bgha"]
@@ -102,11 +108,13 @@ radius = 9.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ba1qb"]
 radius = 12.0
 
-[node name="EnemySpider" type="CharacterBody2D" node_paths=PackedStringArray("velocity_component") groups=["enemy"]]
+[node name="EnemySpider" type="CharacterBody2D" node_paths=PackedStringArray("random_audio_player_component", "health_component", "velocity_component") groups=["enemy"]]
 collision_layer = 16
 collision_mask = 17
 motion_mode = 1
 script = ExtResource("1_htoa4")
+random_audio_player_component = NodePath("Managers/RandomAudioPlayerComponent")
+health_component = NodePath("Managers/HealthComponent")
 velocity_component = NodePath("Managers/VelocityComponent")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -115,10 +123,18 @@ libraries = {
 }
 autoplay = "walk"
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_nothn")
+max_distance = 300.0
+bus = &"SFX"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ivs0u")
 
 [node name="Managers" type="Node2D" parent="."]
+
+[node name="RandomAudioPlayerComponent" parent="Managers" instance=ExtResource("3_6ng32")]
+audio_array = Array[AudioStream]([ExtResource("2_nothn"), ExtResource("4_c5ulk"), ExtResource("5_weowr"), ExtResource("6_k1bl5"), ExtResource("7_db823")])
 
 [node name="DeathComponent" parent="Managers" node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_3qfml")]
 health_component = NodePath("../HealthComponent")

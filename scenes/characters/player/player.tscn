@@ -1,12 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://d6m8i42sep5r"]
+[gd_scene load_steps=20 format=3 uid="uid://d6m8i42sep5r"]
 
 [ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_vot3j"]
 [ext_resource type="Texture2D" uid="uid://b2s3iy43pikj4" path="res://scenes/characters/player/player.png" id="2_4qwgh"]
+[ext_resource type="PackedScene" uid="uid://cpoqi6xc52ilj" path="res://scenes/components/random_audio_player_component.tscn" id="2_uu543"]
 [ext_resource type="PackedScene" uid="uid://bj0k1mylrpyiw" path="res://scenes/components/health_component.tscn" id="3_6dnyl"]
 [ext_resource type="PackedScene" uid="uid://cw2ua5e15wnhh" path="res://scenes/abilities/ability_sword/ability_sword_manager.tscn" id="3_052bo"]
+[ext_resource type="AudioStream" uid="uid://po3wmqgteui" path="res://assets/audio/damaged_player/impactMining_000.ogg" id="3_jiucb"]
 [ext_resource type="Theme" uid="uid://lk30a78lrjjs" path="res://resources/theme/game_theme.tres" id="4_32jrw"]
 [ext_resource type="Script" path="res://scenes/components/velocity_component.gd" id="4_gs11t"]
+[ext_resource type="AudioStream" uid="uid://sb0s8b0ivda7" path="res://assets/audio/damaged_player/impactMining_001.ogg" id="4_sqyy4"]
 [ext_resource type="PackedScene" uid="uid://ghkqn5e263hr" path="res://scenes/components/hurtbox_component.tscn" id="5_cjjha"]
+[ext_resource type="AudioStream" uid="uid://o31hg6a71fdv" path="res://assets/audio/damaged_player/impactMining_002.ogg" id="5_mcjaf"]
+[ext_resource type="AudioStream" uid="uid://cfdn34yw6kdi2" path="res://assets/audio/damaged_player/impactMining_003.ogg" id="6_ad4vk"]
+[ext_resource type="AudioStream" uid="uid://dn270qhwhdql5" path="res://assets/audio/damaged_player/impactMining_004.ogg" id="7_nbn0t"]
 
 [sub_resource type="Animation" id="Animation_0pri2"]
 length = 0.001
@@ -108,7 +114,11 @@ collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_vot3j")
 
-[node name="Managers" type="Node" parent="."]
+[node name="Managers" type="Node2D" parent="."]
+
+[node name="RandomAudioPlayerComponent" parent="Managers" instance=ExtResource("2_uu543")]
+unique_name_in_owner = true
+audio_array = Array[AudioStream]([ExtResource("3_jiucb"), ExtResource("4_sqyy4"), ExtResource("5_mcjaf"), ExtResource("6_ad4vk"), ExtResource("7_nbn0t")])
 
 [node name="Abilities" type="Node" parent="Managers"]
 unique_name_in_owner = true

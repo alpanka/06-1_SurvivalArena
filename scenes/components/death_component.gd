@@ -22,3 +22,4 @@ func _on_entity_died(_entity_name: String) -> void:
 	self.global_position = spawn_position
 	layer_entities.add_child(self)
 	$AnimationPlayer.play("default")
+	$RandomAudioPlayerComponent.play_random_audio()

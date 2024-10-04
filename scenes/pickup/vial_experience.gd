@@ -29,6 +29,8 @@ func _on_pickup_area_entered(area: Area2D) -> void:
 	tween.tween_property(sprite, "scale", Vector2.ZERO, 0.1).set_delay(0.5)
 	
 	tween.chain().tween_callback(_vial_collected) # Chain both parallel tweens
+	
+	$RandomAudioPlayerComponent.play_random_audio()
 
 
 # Disable collision once it is collected
@@ -49,6 +51,7 @@ func _tween_collect(percent: float, start_pos: Vector2) -> void:
 	var smoothing: float = 1 - exp(-2 * get_process_delta_time())
 	
 	rotation = lerp_angle(rotation, target_rotation, smoothing)
+
 
 
 # Final method upon collection
