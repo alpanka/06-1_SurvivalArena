@@ -27,9 +27,11 @@ func _initialize_endgame_screen() -> void:
 	
 	match endgame_type:
 		TYPE.WON:
+			$RandomAudioPlayerComponentBasic.play_random_audio(0)
 			%TitleLabel.text = "VICTORY!!!"
 			%DescriptionLabel.text = "You won!"
 		TYPE.LOST:
+			$RandomAudioPlayerComponentBasic.play_random_audio(1)
 			%TitleLabel.text = "LOST!!!"
 			%DescriptionLabel.text = "You've lost!"
 

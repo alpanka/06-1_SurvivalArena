@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.3", "Forward Plus")
 
 Signals="*res://globals/signals.tscn"
 Names="*res://globals/names.tscn"
+GameMusicPlayer="*res://globals/game_music_player.tscn"
 
 [debug]
 
