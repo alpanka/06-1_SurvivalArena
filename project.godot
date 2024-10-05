@@ -17,6 +17,10 @@ config/use_custom_user_dir=true
 config/custom_user_dir_name="SurvivalArena"
 config/features=PackedStringArray("4.3", "Forward Plus")
 
+[audio]
+
+buses/default_bus_layout="res://resources/default_bus_layout.tres"
+
 [autoload]
 
 Signals="*res://globals/signals.tscn"
@@ -42,6 +46,7 @@ layer_entities=""
 layer_foreground=""
 layer_ui=""
 upgrade_card=""
+upgrade_meta_card=""
 
 [gui]
 

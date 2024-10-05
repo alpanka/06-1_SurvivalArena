@@ -8,10 +8,13 @@ var save_data: Dictionary = {
 
 func _ready() -> void:
 	_initialize_meta_progession()
+	print(save_data)
 
 
 func _initialize_meta_progession() -> void:
 	Signals.exp_vial_collected.connect(_on_exp_vial_collected)
+	#save_data["meta_upgrade_currency"] = 1000
+	#save_file()
 	load_save_file()
 
 
@@ -19,8 +22,8 @@ func load_save_file() -> void:
 	if not FileAccess.file_exists(Names.SAVE_FILE_PATH):
 		return
 	
-	var save_file := FileAccess.open(Names.SAVE_FILE_PATH, FileAccess.READ)
-	save_data = save_file.get_var()
+	var load_file := FileAccess.open(Names.SAVE_FILE_PATH, FileAccess.READ)
+	save_data = load_file.get_var()
 
 
 func save_file() -> void:
@@ -38,8 +41,11 @@ func add_meta_upgrade(upgrade: MetaUpgradeResource) -> void:
 		}
 
 	save_data["meta_upgrades"][upgrade.id]["quantity"] += 1
+	
+	# AutoSave
+	save_file()
 
 
 # Add collected XP amount
-func _on_exp_vial_collected(exp: int) -> void:
-	save_data["meta_upgrade_currency"] += exp
+func _on_exp_vial_collected(_exp: int) -> void:
+	save_data["meta_upgrade_currency"] += _exp

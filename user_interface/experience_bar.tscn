@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://user_interface/experience_bar.gd" id="1_pvw31"]
 [ext_resource type="Theme" uid="uid://lk30a78lrjjs" path="res://resources/theme/game_theme.tres" id="2_e4f37"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sey0v"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3unbe"]
 bg_color = Color(0.458824, 0.890196, 1, 1)
 border_width_left = 4
 border_width_top = 4
@@ -29,7 +29,7 @@ layout_mode = 2
 size_flags_vertical = 8
 mouse_filter = 2
 theme = ExtResource("2_e4f37")
-theme_override_styles/fill = SubResource("StyleBoxFlat_sey0v")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3unbe")
 max_value = 1.0
 value = 0.5
 show_percentage = false
