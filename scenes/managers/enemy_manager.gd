@@ -45,8 +45,13 @@ func _get_spawn_position() -> Vector2:
 		# Length of the spawn position
 		spawn_position = player_node.global_position + (spawn_direction * SPAWN_RADIUS)
 		
+		# Extra length to check for collision
+		var additional_offset = spawn_direction * 20
+		
 		# Raycast and its parameters
-		var raycast_param = PhysicsRayQueryParameters2D.create(player_node.global_position, spawn_position, 1)
+		var raycast_param = PhysicsRayQueryParameters2D\
+		.create(player_node.global_position, spawn_position+additional_offset, 1)
+		
 		var coll_results = get_tree().root.world_2d.direct_space_state.intersect_ray(raycast_param)
 		
 		if coll_results.is_empty():
