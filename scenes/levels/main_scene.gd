@@ -18,3 +18,6 @@ func _on_player_died(_name) -> void:
 	var lost_screen = endgame_scene.instantiate() as EndGameScreen
 	lost_screen.endgame_type = lost_screen.TYPE.LOST
 	add_child(lost_screen)
+	
+	# AutoSave
+	MetaProgression.save_file()

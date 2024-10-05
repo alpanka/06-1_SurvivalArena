@@ -13,6 +13,8 @@ config_version=5
 config/name="Firebelley - SurvivalArena"
 config/tags=PackedStringArray("training")
 run/main_scene="res://user_interface/main_menu.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="SurvivalArena"
 config/features=PackedStringArray("4.3", "Forward Plus")
 
 [autoload]
@@ -21,6 +23,7 @@ Signals="*res://globals/signals.tscn"
 Names="*res://globals/names.tscn"
 GameMusicPlayer="*res://globals/game_music_player.tscn"
 SceneTransition="*res://globals/scene_transition.tscn"
+MetaProgression="*res://globals/meta_progression.gd"
 
 [debug]
 

@@ -1,7 +1,7 @@
 extends Node
 
+#region SCENES
 @export_subgroup("SCENES")
-
 ## Main menu
 @export var main_menu_scene: PackedScene = preload("res://user_interface/main_menu.tscn")
 
@@ -16,6 +16,7 @@ extends Node
 
 ## Floating Text Scene
 @export var floating_text_scene: PackedScene = preload("res://user_interface/floating_text.tscn")
+#endregion
 
 
 #region UPGRADE RESOURCES
@@ -36,4 +37,10 @@ extends Node
 ## Player speed upgrade resource
 @export var player_speed_resource: AbilityUpgrade = preload("res://resources/upgrades/player_speed.tres")
 
+#endregion
+
+
+#region CONSTANTS
+# Save file location
+const SAVE_FILE_PATH: String = "user://game.save"
 #endregion

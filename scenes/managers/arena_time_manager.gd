@@ -44,6 +44,9 @@ func _on_level_timer_timeout() -> void:
 	var endgame_screen = endgame_scene.instantiate() as EndGameScreen
 	endgame_screen.endgame_type = endgame_screen.TYPE.WON
 	add_child(endgame_screen)
+	
+	# AutoSave
+	MetaProgression.save_file()
 
 
 ## Emit difficulty increase every xx difficulty duration
