@@ -32,4 +32,3 @@ func _update_drop_change() -> void:
 	
 	if exp_upgrade_count > 0:
 		drop_chance += 0.1 * exp_upgrade_count
-		print(drop_chance)

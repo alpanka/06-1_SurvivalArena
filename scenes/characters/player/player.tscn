@@ -132,8 +132,8 @@ one_shot = true
 
 [node name="VelocityComponent" type="Node" parent="Managers"]
 script = ExtResource("4_gs11t")
-max_speed = 100
-acceleration = 25.0
+max_speed = 120
+acceleration = 35.0
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(20, 4)

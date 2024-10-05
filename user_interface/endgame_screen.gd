@@ -44,6 +44,6 @@ func _on_cont_button_pressed() -> void:
 
 
 func _on_quit_button_pressed() -> void:
+	get_tree().paused = false
 	SceneTransition.transition_to_scene(Names.main_menu_scene)
 	await SceneTransition.transitioned_halfway
-	get_tree().paused = false
