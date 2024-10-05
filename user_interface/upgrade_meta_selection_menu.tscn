@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=4 uid="uid://dj8wsvhnj7bp7"]
+[gd_scene load_steps=8 format=4 uid="uid://dj8wsvhnj7bp7"]
 
 [ext_resource type="Script" path="res://user_interface/upgrade_meta_selection_menu.gd" id="1_0uv4l"]
 [ext_resource type="TileSet" uid="uid://dhai67i6ht0w5" path="res://resources/tiny_dungeon.tres" id="2_53huc"]
 [ext_resource type="Script" path="res://resources/meta_upgrades/meta_upgrade_base.gd" id="2_ke4hv"]
 [ext_resource type="Resource" uid="uid://tehvmlp0fld5" path="res://resources/meta_upgrades/meta_exp_gain_rate.tres" id="3_vo7lw"]
 [ext_resource type="PackedScene" uid="uid://dwpf2r4nnpwtb" path="res://user_interface/vignette_screen.tscn" id="4_td8gq"]
+[ext_resource type="PackedScene" uid="uid://bmwdp8ht1jur4" path="res://user_interface/upgrade_meta_card_panel.tscn" id="6_628nr"]
+[ext_resource type="PackedScene" uid="uid://b3dej0wh58hyg" path="res://user_interface/sound_button.tscn" id="6_ssnqg"]
 
 [node name="MetaCardSelectionMenu" type="CanvasLayer"]
 process_mode = 3
@@ -29,6 +31,14 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
+[node name="BackButton" parent="MarginContainer" instance=ExtResource("6_ssnqg")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Back"
+
 [node name="MetaGridContainer" type="GridContainer" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -36,3 +46,15 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/h_separation = 22
 columns = 5
+
+[node name="UpgradeMetaCardPanel" parent="MarginContainer/MetaGridContainer" instance=ExtResource("6_628nr")]
+layout_mode = 2
+
+[node name="UpgradeMetaCardPanel2" parent="MarginContainer/MetaGridContainer" instance=ExtResource("6_628nr")]
+layout_mode = 2
+
+[node name="UpgradeMetaCardPanel3" parent="MarginContainer/MetaGridContainer" instance=ExtResource("6_628nr")]
+layout_mode = 2
+
+[node name="UpgradeMetaCardPanel4" parent="MarginContainer/MetaGridContainer" instance=ExtResource("6_628nr")]
+layout_mode = 2

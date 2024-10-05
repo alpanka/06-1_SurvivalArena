@@ -22,7 +22,7 @@ func _initialize_animation() -> void:
 
 func _initialize_endgame_screen() -> void:
 	get_tree().paused = true
-	%RestartButton.pressed.connect(_on_restart_button_pressed)
+	%ContinueButton.pressed.connect(_on_cont_button_pressed)
 	%QuitButton.pressed.connect(_on_quit_button_pressed)
 	
 	match endgame_type:
@@ -36,14 +36,14 @@ func _initialize_endgame_screen() -> void:
 			%DescriptionLabel.text = "You've lost!"
 
 
-func _on_restart_button_pressed() -> void:
+func _on_cont_button_pressed() -> void:
 	SceneTransition.scene_transition()
 	await SceneTransition.transitioned_halfway
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/levels/main_scene.tscn")
+	get_tree().change_scene_to_packed(Names.meta_selection_menu_scene)
 
 
 func _on_quit_button_pressed() -> void:
-	SceneTransition.scene_transition()
+	SceneTransition.transition_to_scene(Names.main_menu_scene)
 	await SceneTransition.transitioned_halfway
-	get_tree().quit()
+	get_tree().paused = false

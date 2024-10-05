@@ -2,22 +2,25 @@ extends Node
 
 #region SCENES
 ## Main menu
-var main_menu_scene: PackedScene = preload("res://user_interface/main_menu.tscn")
+const main_menu_scene: PackedScene = preload("res://user_interface/main_menu.tscn")
 
 ## Main game scene
-var main_game_scene: PackedScene = preload("res://scenes/levels/main_scene.tscn")
+const main_game_scene: PackedScene = preload("res://scenes/levels/main_scene.tscn")
 
 ## Settings menu scene
-var settings_menu_scene: PackedScene = preload("res://user_interface/settings_menu.tscn")
+const settings_menu_scene: PackedScene = preload("res://user_interface/settings_menu.tscn")
 
 ## Pause menu scene
-var pause_menu_scene: PackedScene = preload("res://user_interface/pause_menu.tscn")
+const pause_menu_scene: PackedScene = preload("res://user_interface/pause_menu.tscn")
 
 ## Meta Upgrade Card Scene
-var upgrade_meta_card_scene: PackedScene = preload("res://user_interface/upgrade_meta_card_panel.tscn")
+const meta_card_scene: PackedScene = preload("res://user_interface/upgrade_meta_card_panel.tscn")
+
+## Meta upgrades menu scene
+const meta_selection_menu_scene: PackedScene = preload("res://user_interface/upgrade_meta_selection_menu.tscn")
 
 ## Floating Text Scene
-var floating_text_scene: PackedScene = preload("res://user_interface/floating_text.tscn")
+const floating_text_scene: PackedScene = preload("res://user_interface/floating_text.tscn")
 #endregion
 
 

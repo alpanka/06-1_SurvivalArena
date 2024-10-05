@@ -15,19 +15,24 @@ func _ready() -> void:
 
 
 # Get card details from upgrade_selection_screen
-func set_upgrade_labels(upgrade: MetaUpgradeResource):
+func set_upgrade_labels(_upgrade: MetaUpgradeResource):
 	# Pass selected upgrade and update xp progress bar
-	self.upgrade = upgrade
-	_update_exp_progress()
+	self.upgrade = _upgrade
+	_updade_player_progress()
 	#print("resource ", upgrade)
 	#print(upgrade.name, " ", upgrade.description)
-	%UpgradeNameLabel.text = upgrade.title
-	%UpgradeDescriptionLabel.text = upgrade.description
+	%UpgradeNameLabel.text = _upgrade.title
+	%UpgradeDescriptionLabel.text = _upgrade.description
 
 
 # Update XP progress bar value
 # (owned XP amount)/(upgrade XP amount)
-func _update_exp_progress() -> void:
+func _updade_player_progress() -> void:
+	var owned_quantity: int = 0
+	if MetaProgression.save_data["meta_upgrades"].has(upgrade.id):
+		owned_quantity = MetaProgression.save_data["meta_upgrades"][upgrade.id]["quantity"]
+	
+	var is_maxed_out: bool = owned_quantity >= upgrade.max_quantity
 	var owned_currency = MetaProgression.save_data["meta_upgrade_currency"]
 	var percent: float = owned_currency / upgrade.exp_cost
 	percent = min(percent, 1.0)
@@ -37,8 +42,12 @@ func _update_exp_progress() -> void:
 	# Update label text
 	%XPLabel.text = str(owned_currency) + "/" + str(upgrade.exp_cost)
 	
-	# Disable purchase button if not enough xp
-	%PurchaseButton.disabled = percent < 1
+	# Update owned quantity of upgrade
+	%CountLabel.text = "x%d" % owned_quantity
+	
+	# Disable purchase button if not enough xp or max quantity owned
+	if percent < 1 or is_maxed_out:
+		%PurchaseButton.disabled = percent < 1
 
 
 func _on_purchase_button_pressed() -> void:
@@ -54,7 +63,7 @@ func _on_purchase_button_pressed() -> void:
 	MetaProgression.save_file()
 	
 	# Update all cards value
-	get_tree().call_group("upgrade_meta_card", "_update_exp_progress")
+	get_tree().call_group("upgrade_meta_card", "_updade_player_progress")
 	
 	%AnimationPlayer.play("selected")
 
