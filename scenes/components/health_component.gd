@@ -21,6 +21,10 @@ func take_damage(damage_amount: float):
 	Callable(_check_entity_death).call_deferred()
 
 
+func heal_entity(heal_amount: float) -> void:
+	health_current = clamp(health_current+heal_amount, 0, health_init)
+
+
 func get_health_percent() -> float:
 	if health_current == 0:
 		return 0

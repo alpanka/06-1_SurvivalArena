@@ -12,8 +12,8 @@ var save_data: Dictionary = {
 
 
 func _ready() -> void:
+	#_on_exp_vial_collected(0) # For debug, add exp points
 	_initialize_meta_progession()
-	print(save_data)
 
 
 func _initialize_meta_progession() -> void:

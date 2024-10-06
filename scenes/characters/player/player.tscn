@@ -127,13 +127,17 @@ unique_name_in_owner = true
 
 [node name="HealthComponent" parent="Managers" instance=ExtResource("3_6dnyl")]
 
-[node name="DamageCooldown" type="Timer" parent="Managers"]
-one_shot = true
-
 [node name="VelocityComponent" type="Node" parent="Managers"]
 script = ExtResource("4_gs11t")
 max_speed = 120
 acceleration = 35.0
+
+[node name="DamageCooldown" type="Timer" parent="Managers"]
+one_shot = true
+
+[node name="HealthRegenTimer" type="Timer" parent="Managers"]
+wait_time = 30.0
+autostart = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(20, 4)

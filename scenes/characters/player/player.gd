@@ -7,6 +7,8 @@ extends CharacterBody2D
 @onready var visuals: Node2D = $Visuals
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
 @onready var velocity_component: VelocityComponent = $Managers/VelocityComponent
+@onready var health_regen_timer: Timer = $Managers/HealthRegenTimer
+
 
 var direction: Vector2
 #var speed_current: float
@@ -55,6 +57,7 @@ func _initialize_player() -> void:
 	hurtbox_component.body_entered.connect(_on_enemy_body_entered)
 	hurtbox_component.body_exited.connect(_on_enemy_body_exited)
 	damage_cooldown.timeout.connect(_on_damage_cooldown)
+	health_regen_timer.timeout.connect(_on_health_regen_timer_timeout)
 	health_component.health_changed.connect(_on_health_changed)
 	Signals.ability_upgrade_added.connect(_on_ability_upgrade_added)
 
@@ -68,12 +71,10 @@ func _get_movement_vector() -> Vector2:
 
 func _check_deal_damage():
 	if damaging_bodies == 0 or not damage_cooldown.is_stopped():
-		print("passed")
 		return
 
 	health_component.take_damage(1)
 	damage_cooldown.start()
-	print("health: ", health_component.health_current)
 
 
 func _on_enemy_body_entered(body: Node2D):
@@ -107,3 +108,11 @@ func _on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, owned_upgrades: 
 	elif ability_upgrade.id == Names.player_speed_resource.id:
 		var speed_extra = 0.1 * speed_init * owned_upgrades[Names.player_speed_resource.id]["quantity"]
 		velocity_component.max_speed = speed_init + speed_extra
+
+
+func _on_health_regen_timer_timeout() -> void:
+	var health_regen_quantity := MetaProgression.get_meta_upgrade_count("health_regeneration")
+	if health_regen_quantity <= 0:
+		return
+	
+	health_component.heal_entity(1 * health_regen_quantity)
