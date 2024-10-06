@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://u26eun0ik6qk"]
+[gd_scene load_steps=5 format=3 uid="uid://u26eun0ik6qk"]
 
 [ext_resource type="Script" path="res://scenes/managers/enemy_manager.gd" id="1_5pbhv"]
 [ext_resource type="PackedScene" uid="uid://qvsgwr7r347h" path="res://scenes/characters/enemy_spider/enemy_spider.tscn" id="2_g6pn0"]
 [ext_resource type="PackedScene" uid="uid://ccjb2ido0isbj" path="res://scenes/characters/enemy_wizard/enemy_wizard.tscn" id="3_1npvm"]
+[ext_resource type="PackedScene" uid="uid://dw306ykvncqc0" path="res://scenes/characters/enemy_bat/enemy_bat.tscn" id="4_yrkwv"]
 
 [node name="EnemyManager" type="Node"]
 script = ExtResource("1_5pbhv")
 enemy_spider = ExtResource("2_g6pn0")
 enemy_wizard = ExtResource("3_1npvm")
+enemy_bat = ExtResource("4_yrkwv")
 
 [node name="SpawnTimer" type="Timer" parent="."]

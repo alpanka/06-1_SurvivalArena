@@ -5,6 +5,7 @@ extends Node
 @export var arena_timer_manager: ArenaTimerManager
 @export var enemy_spider: PackedScene
 @export var enemy_wizard: PackedScene
+@export var enemy_bat: PackedScene
 @export var spawn_timeout: float = 1.0
 
 const SPAWN_RADIUS: int = 350
@@ -26,7 +27,7 @@ func _initialize_enemy_manager() -> void:
 	player_node = get_tree().get_first_node_in_group("player")
 	arena_timer_manager.difficulty_increased.connect(_on_difficulty_increased)
 	
-	# Add spider as a start enemy with weight
+	# Add enemies to start with
 	enemy_table.add_item(enemy_spider, 10)
 
 
@@ -80,5 +81,7 @@ func _on_difficulty_increased(_difficulty) -> void:
 	spawn_timer.wait_time = max(0.3, spawn_timeout - time_off)
 
 	# _difficulty = 6 --> 30 secs, add enemy_wizard to be spawned
-	if _difficulty == 6:
-		enemy_table.add_item(enemy_wizard, 20)
+	if _difficulty == 6: # 30 secs in
+		enemy_table.add_item(enemy_wizard, 15)
+	elif _difficulty == 18: # 90 secs in
+		enemy_table.add_item(enemy_bat, 10)
