@@ -3,7 +3,12 @@ extends Node
 
 var save_data: Dictionary = {
 	"meta_upgrade_currency": 0,
-	"meta_upgrades": {}
+	"meta_upgrades": {},
+	"settings": {
+		"SFX": 1,
+		"MUSIC": 1,
+		"WINDOW_MODE": 0
+	}
 }
 
 # { "meta_upgrade_currency": 0, 
@@ -12,8 +17,9 @@ var save_data: Dictionary = {
 
 
 func _ready() -> void:
-	_on_exp_vial_collected(2000) # For debug, add exp points
+	#_on_exp_vial_collected(2000) # For debug, add exp points
 	_initialize_meta_progession()
+	load_settings()
 	print("Opened save file: ", save_data)
 
 
@@ -59,7 +65,27 @@ func get_meta_upgrade_count(upgrade_id: String) -> int:
 		return 0
 
 
-
 # Add collected XP amount
 func _on_exp_vial_collected(_exp: int) -> void:
 	save_data["meta_upgrade_currency"] += _exp
+
+
+# Save settings parameters to file
+func update_settigs(sfx_vol: float, music_vol: float, window_mode: int) -> void:
+	save_data["SFX"] = sfx_vol
+	save_data["MUSIC"] = music_vol
+	save_data["WINDOW_MODE"] = window_mode
+	save_file()
+
+
+# Load settings parameters
+func load_settings() -> void:
+	# Add settings parameters if they do not exist
+	if not save_data.has("settings"):
+		save_data["settings"] = {}
+		save_data["settings"]["SFX"] = 1
+		save_data["settings"]["MUSIC"] = 1
+		save_data["settings"]["WINDOW_MODE"] = 0
+
+	# Set saved window mode on launch
+	DisplayServer.window_set_mode(save_data["settings"]["WINDOW_MODE"])

@@ -2,10 +2,13 @@ extends CanvasLayer
 
 signal back_button_pressed
 
+var sfx_vol: float
+var music_bol: float
 var window_mode := DisplayServer.window_get_mode()
 
 
 func _ready() -> void:
+	_load_settings_file()
 	_update_volume_sliders()
 	
 	%WindowButton.text = _get_window_mode_name()
@@ -15,6 +18,13 @@ func _ready() -> void:
 	
 	%SFXSlider.value_changed.connect(_on_audio_slider_changed.bind("SFX"))
 	%MusicSlider.value_changed.connect(_on_audio_slider_changed.bind("MUSIC"))
+
+
+func _load_settings_file() -> void:
+	_set_bus_volume("SFX", MetaProgression.save_data["settings"]["SFX"])
+	_set_bus_volume("MUSIC", MetaProgression.save_data["settings"]["MUSIC"])
+	
+	DisplayServer.window_set_mode(MetaProgression.save_data["settings"]["WINDOW_MODE"])
 
 
 func _update_volume_sliders():
@@ -59,9 +69,15 @@ func _on_window_button_pressed() -> void:
 	if window_mode == DisplayServer.WINDOW_MODE_FULLSCREEN:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		%WindowButton.text = _get_window_mode_name()
+		window_mode = DisplayServer.WINDOW_MODE_WINDOWED
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		%WindowButton.text = _get_window_mode_name()
+		window_mode = DisplayServer.WINDOW_MODE_FULLSCREEN
+	
+	# Save window mode settings
+	MetaProgression.save_data["settings"]["WINDOW_MODE"] = window_mode
+	MetaProgression.save_file()
 
 
 func _on_back_button_pressed() -> void:
@@ -70,5 +86,10 @@ func _on_back_button_pressed() -> void:
 	back_button_pressed.emit()
 
 
+# Apply set volume value to its bus volume
 func _on_audio_slider_changed(value: float, bus_name: String) -> void:
 	_set_bus_volume(bus_name, value)
+	
+	# Save changed sliders into save file
+	MetaProgression.save_data["settings"][bus_name] = value
+	MetaProgression.save_file()
