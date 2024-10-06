@@ -64,6 +64,10 @@ func _update_upgrade_array(_chosen_upgrade: AbilityUpgrade) -> void:
 	# Axe damage upgrade requires having an axe
 	if _chosen_upgrade.id == Names.axe_weapon_resource.id:
 		upgrade_array.add_item(Names.axe_damage_rate_resource, 20)
+	
+	# Anvil count requires having anvil weapon
+	if _chosen_upgrade.id == Names.anvil_weapon_resource.id:
+		upgrade_array.add_item(Names.anvil_count_resource, 15)
 
 
 # First version

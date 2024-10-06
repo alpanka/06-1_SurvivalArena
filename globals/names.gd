@@ -29,6 +29,9 @@ const floating_text_scene: PackedScene = preload("res://user_interface/floating_
 ## Anvil weapon resource
 const anvil_weapon_resource: AbilityUpgrade = preload("res://resources/upgrades/weapon/anvil_weapon.tres")
 
+## Anvil count upgrade resource
+const anvil_count_resource: AbilityUpgrade = preload("res://resources/upgrades/anvil_count.tres")
+
 ## Axe weapon resource
 const axe_weapon_resource: AbilityUpgrade = preload("res://resources/upgrades/weapon/axe_weapon.tres")
 
