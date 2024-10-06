@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MetaUpgradeResource" load_steps=2 format=3 uid="uid://chca4fbn70fsx"]
+
+[ext_resource type="Script" path="res://resources/meta_upgrades/meta_upgrade_base.gd" id="1_y6lnp"]
+
+[resource]
+script = ExtResource("1_y6lnp")
+id = "card_count"
+max_quantity = 1
+exp_cost = 200
+title = "Card Count"
+description = "Select among 3 cards upon level up."

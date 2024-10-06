@@ -5,6 +5,7 @@ extends Node
 
 var owned_upgrades: Dictionary
 var upgrade_array: WeightedTable = WeightedTable.new()
+var card_to_pick: int = 2 # How many card to pick among?
 
 
 func _ready() -> void:
@@ -94,8 +95,14 @@ func _update_upgrade_array(_chosen_upgrade: AbilityUpgrade) -> void:
 
 # Pick unique upgrades to be selected
 func _pick_upgrades() -> Array[AbilityUpgrade]:
+	if MetaProgression.save_data["meta_upgrades"].has("card_count"):
+		card_to_pick = 3
+	else:
+		card_to_pick = 2
+	
 	var chosen_upgrades: Array[AbilityUpgrade] = []
-	for i in 2:
+	
+	for i in card_to_pick:
 		if upgrade_array.items.size() == chosen_upgrades.size():
 			break
 		var chosen_upgrade = upgrade_array.pick_item(chosen_upgrades)

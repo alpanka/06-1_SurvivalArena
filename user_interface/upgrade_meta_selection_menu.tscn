@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://dj8wsvhnj7bp7"]
+[gd_scene load_steps=10 format=4 uid="uid://dj8wsvhnj7bp7"]
 
 [ext_resource type="Script" path="res://user_interface/upgrade_meta_selection_menu.gd" id="1_0uv4l"]
 [ext_resource type="TileSet" uid="uid://dhai67i6ht0w5" path="res://resources/tiny_dungeon.tres" id="2_53huc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://tehvmlp0fld5" path="res://resources/meta_upgrades/meta_exp_gain_rate.tres" id="3_vo7lw"]
 [ext_resource type="Resource" uid="uid://d1lefe7m237ch" path="res://resources/meta_upgrades/health_regeneration.tres" id="4_4gge6"]
 [ext_resource type="PackedScene" uid="uid://dwpf2r4nnpwtb" path="res://user_interface/vignette_screen.tscn" id="4_td8gq"]
+[ext_resource type="Resource" uid="uid://chca4fbn70fsx" path="res://resources/meta_upgrades/card_count.tres" id="5_tdjgv"]
 [ext_resource type="PackedScene" uid="uid://bmwdp8ht1jur4" path="res://user_interface/upgrade_meta_card_panel.tscn" id="6_628nr"]
 [ext_resource type="PackedScene" uid="uid://b3dej0wh58hyg" path="res://user_interface/sound_button.tscn" id="6_ssnqg"]
 
@@ -13,7 +14,7 @@
 process_mode = 3
 layer = 2
 script = ExtResource("1_0uv4l")
-meta_upgrades = Array[ExtResource("2_ke4hv")]([ExtResource("3_vo7lw"), ExtResource("4_4gge6")])
+meta_upgrades = Array[ExtResource("2_ke4hv")]([ExtResource("3_vo7lw"), ExtResource("4_4gge6"), ExtResource("5_tdjgv")])
 
 [node name="VignetteScreen" parent="." instance=ExtResource("4_td8gq")]
 

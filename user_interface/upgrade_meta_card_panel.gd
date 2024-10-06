@@ -47,7 +47,7 @@ func _updade_player_progress() -> void:
 	
 	# Disable purchase button if not enough xp or max quantity owned
 	if percent < 1 or is_maxed_out:
-		%PurchaseButton.disabled = percent < 1
+		%PurchaseButton.disabled = true
 
 
 func _on_purchase_button_pressed() -> void:
