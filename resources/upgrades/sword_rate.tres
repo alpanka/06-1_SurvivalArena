@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://cd6lptok45p0w"]
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=3 format=3 uid="uid://cd6lptok45p0w"]
 
 [ext_resource type="Script" path="res://resources/upgrades/_ability_upgrade.gd" id="1_4aygy"]
+[ext_resource type="Texture2D" uid="uid://da3hgkca4ea3a" path="res://scenes/abilities/ability_sword/sword01.png" id="2_onose"]
 
 [resource]
 script = ExtResource("1_4aygy")
 id = "sword_rate"
+texture = ExtResource("2_onose")
 max_quantity = 0
 name = "Sword Rate"
 description = "Increase sword spawn rate by 10%"

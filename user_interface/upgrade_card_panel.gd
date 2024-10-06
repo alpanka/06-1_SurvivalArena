@@ -37,6 +37,7 @@ func set_upgrade_labels(upgrade: AbilityUpgrade):
 	#print(upgrade.name, " ", upgrade.description)
 	%UpgradeNameLabel.text = upgrade.name
 	%UpgradeDescriptionLabel.text = upgrade.description
+	%ResourceIcon.texture = upgrade.texture
 
 
 func _on_card_clicked(event: InputEvent):

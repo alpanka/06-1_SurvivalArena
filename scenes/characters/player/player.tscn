@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d6m8i42sep5r"]
+[gd_scene load_steps=20 format=3 uid="uid://d6m8i42sep5r"]
 
 [ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_vot3j"]
 [ext_resource type="Texture2D" uid="uid://b2s3iy43pikj4" path="res://scenes/characters/player/player.png" id="2_4qwgh"]
@@ -13,7 +13,6 @@
 [ext_resource type="AudioStream" uid="uid://o31hg6a71fdv" path="res://assets/audio/damaged_player/impactMining_002.ogg" id="5_mcjaf"]
 [ext_resource type="AudioStream" uid="uid://cfdn34yw6kdi2" path="res://assets/audio/damaged_player/impactMining_003.ogg" id="6_ad4vk"]
 [ext_resource type="AudioStream" uid="uid://dn270qhwhdql5" path="res://assets/audio/damaged_player/impactMining_004.ogg" id="7_nbn0t"]
-[ext_resource type="PackedScene" uid="uid://g47epsgq8rhy" path="res://scenes/abilities/ability_anvil/ability_anvil_manager.tscn" id="9_uljir"]
 
 [sub_resource type="Animation" id="Animation_0pri2"]
 length = 0.001
@@ -125,8 +124,6 @@ audio_array = Array[AudioStream]([ExtResource("3_jiucb"), ExtResource("4_sqyy4")
 unique_name_in_owner = true
 
 [node name="AbilitySwordManager" parent="Managers/Abilities" instance=ExtResource("3_052bo")]
-
-[node name="AbilityAnvilManager" parent="Managers/Abilities" instance=ExtResource("9_uljir")]
 
 [node name="HealthComponent" parent="Managers" instance=ExtResource("3_6dnyl")]
 

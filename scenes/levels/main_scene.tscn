@@ -37,6 +37,7 @@ position_smoothing_speed = 16.0
 rotation_smoothing_enabled = true
 
 [node name="ArenaTimeManager" parent="Managers" instance=ExtResource("6_gd3xp")]
+level_duration = 180.0
 
 [node name="EnemyManager" parent="Managers" node_paths=PackedStringArray("arena_timer_manager") instance=ExtResource("2_mn2oi")]
 arena_timer_manager = NodePath("../ArenaTimeManager")

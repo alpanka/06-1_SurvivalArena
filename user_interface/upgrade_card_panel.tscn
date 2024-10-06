@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bxx61qkbmy2n3"]
+[gd_scene load_steps=22 format=3 uid="uid://bxx61qkbmy2n3"]
 
 [ext_resource type="Script" path="res://user_interface/upgrade_card_panel.gd" id="1_7er8f"]
 [ext_resource type="Theme" uid="uid://lk30a78lrjjs" path="res://resources/theme/game_theme.tres" id="1_t6t6s"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://v1v5qa0fd435" path="res://assets/audio/ui_card/switch8.ogg" id="12_8inih"]
 [ext_resource type="AudioStream" uid="uid://dbgne2ux0s5l4" path="res://assets/audio/ui_card/switch9.ogg" id="13_kt1uq"]
 [ext_resource type="AudioStream" uid="uid://cxnj2ypkshniu" path="res://assets/audio/ui_card/switch10.ogg" id="14_ojm07"]
+[ext_resource type="Texture2D" uid="uid://c2aatb7q0kltd" path="res://scenes/abilities/ability_anvil/anvil.png" id="15_oqmxv"]
 
 [sub_resource type="Animation" id="Animation_efxlf"]
 length = 0.001
@@ -271,7 +272,20 @@ unique_name_in_owner = true
 process_mode = 3
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
+size_flags_vertical = 3
 text = "+100% Attack
 +100% Speed
 +100% Health"
 autowrap_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_type_variation = &"PanelContainerAlternative"
+
+[node name="ResourceIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("15_oqmxv")

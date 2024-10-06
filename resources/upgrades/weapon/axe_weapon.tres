@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="AbilityUpgradeWeapon" load_steps=3 format=3 uid="uid://khy7gfuoquue"]
+[gd_resource type="Resource" script_class="AbilityUpgradeWeapon" load_steps=4 format=3 uid="uid://khy7gfuoquue"]
 
 [ext_resource type="PackedScene" uid="uid://c0mhn7w1c1f5m" path="res://scenes/abilities/ability_axe/ability_axe_manager.tscn" id="1_drlxi"]
 [ext_resource type="Script" path="res://resources/upgrades/weapon/__ability_upgrade_weapon.gd" id="1_hqru5"]
+[ext_resource type="Texture2D" uid="uid://dqevvvjquj5vr" path="res://scenes/abilities/ability_axe/axe.png" id="3_ekpyi"]
 
 [resource]
 script = ExtResource("1_hqru5")
 ability_weapon_controller = ExtResource("1_drlxi")
 id = "axe_weapon"
+texture = ExtResource("3_ekpyi")
 max_quantity = 1
 name = "Axe"
 description = "Spinning axe"
