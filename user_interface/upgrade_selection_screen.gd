@@ -18,12 +18,12 @@ func set_upgrade_panels(upgrades: Array[AbilityUpgrade]):
 
 	for upgrade in upgrades:
 		var card_panel = upgrade_card_panel_scene.instantiate()
-		card_panel.set_upgrade_labels(upgrade)
 		card_panel.card_selected.connect(_on_card_selected.bind(upgrade))
+		card_panel.set_upgrade_labels(upgrade)
 		%CardContainer.add_child(card_panel)
 		card_panel.play_in(delay)
 		
-		delay += 0.25
+		delay += 0.1
 
 
 # Emit selected upgrade to upgrade_manager then unpause

@@ -6,7 +6,7 @@ signal card_selected
 @export var sample: AbilityUpgrade
 
 var played_in_anim: bool = false
-var active: bool = true
+var active: bool = false
 
 func _ready() -> void:
 	gui_input.connect(_on_card_clicked)
@@ -15,8 +15,8 @@ func _ready() -> void:
 
 # Animation to be played as cards area added.
 func play_in(delay: float = 0.0) -> void:
-	if not active:
-		return
+	#if not active:
+		#return
 	#if delay > 0:
 		#await get_tree().create_timer(delay).timeout
 	self.modulate = Color.TRANSPARENT
@@ -24,6 +24,7 @@ func play_in(delay: float = 0.0) -> void:
 	
 	await  %AnimationPlayer.animation_finished
 	played_in_anim = true
+	active = true
 
 
 func play_discard() -> void:
@@ -39,7 +40,7 @@ func set_upgrade_labels(upgrade: AbilityUpgrade):
 
 
 func _on_card_clicked(event: InputEvent):
-	if not active:
+	if active == false:
 		return
 	
 	if event.is_action_pressed("LMB"):
@@ -56,7 +57,7 @@ func _on_card_clicked(event: InputEvent):
 
 
 func _on_mouse_entered() -> void:
-	if not active:
+	if active == false:
 		return
 	
 	%AnimationPlayer.play("hover")
