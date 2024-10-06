@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityUpgradeWeapon" load_steps=3 format=3 uid="uid://dkcwllre5wcnl"]
+
+[ext_resource type="PackedScene" uid="uid://g47epsgq8rhy" path="res://scenes/abilities/ability_anvil/ability_anvil_manager.tscn" id="1_dmpj3"]
+[ext_resource type="Script" path="res://resources/upgrades/weapon/__ability_upgrade_weapon.gd" id="2_kpkef"]
+
+[resource]
+script = ExtResource("2_kpkef")
+ability_weapon_controller = ExtResource("1_dmpj3")
+id = "anvil_weapon"
+max_quantity = 1
+name = "Anvil"
+description = "Raining anvils!"

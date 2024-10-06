@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8utj5ea6srve"
-path.s3tc="res://.godot/imported/screen_transition.png-736694c17ea25fc973884d2bfc1dd5f4.s3tc.ctex"
+uid="uid://c2aatb7q0kltd"
+path="res://.godot/imported/anvil.png-8e155b4afea23950523f5d4578826cf7.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/screen_transition.png"
-dest_files=["res://.godot/imported/screen_transition.png-736694c17ea25fc973884d2bfc1dd5f4.s3tc.ctex"]
+source_file="res://scenes/abilities/ability_anvil/anvil.png"
+dest_files=["res://.godot/imported/anvil.png-8e155b4afea23950523f5d4578826cf7.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

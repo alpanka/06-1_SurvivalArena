@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://globals/scene_transition.gd" id="1_2no62"]
 [ext_resource type="Shader" path="res://resources/shaders/scene_transition.gdshader" id="1_hb7w7"]
-[ext_resource type="Texture2D" uid="uid://c8utj5ea6srve" path="res://assets/screen_transition.png" id="2_lerco"]
+[ext_resource type="Texture2D" uid="uid://c8utj5ea6srve" path="res://assets/ui/screen_transition.png" id="2_lerco"]
 
 [sub_resource type="Animation" id="Animation_v3eku"]
 length = 0.001

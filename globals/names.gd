@@ -26,20 +26,23 @@ const floating_text_scene: PackedScene = preload("res://user_interface/floating_
 
 #region UPGRADE RESOURCES
 
+## Anvil weapon resource
+const anvil_weapon_resource: AbilityUpgrade = preload("res://resources/upgrades/weapon/anvil_weapon.tres")
+
 ## Axe weapon resource
-var axe_weapon_resource: AbilityUpgrade = preload("res://resources/upgrades/weapon/axe_weapon.tres")
+const axe_weapon_resource: AbilityUpgrade = preload("res://resources/upgrades/weapon/axe_weapon.tres")
 
 ## Sword rate resource
-var sword_rate_resource: AbilityUpgrade = preload("res://resources/upgrades/sword_rate.tres")
+const sword_rate_resource: AbilityUpgrade = preload("res://resources/upgrades/sword_rate.tres")
 
 ## Sword damage rate resource
-var sword_damage_rate_resource: AbilityUpgrade = preload("res://resources/upgrades/sword_damage.tres")
+const sword_damage_rate_resource: AbilityUpgrade = preload("res://resources/upgrades/sword_damage.tres")
 
 ## Axe damage rate resource
-var axe_damage_rate_resource: AbilityUpgrade = preload("res://resources/upgrades/axe_damage.tres")
+const axe_damage_rate_resource: AbilityUpgrade = preload("res://resources/upgrades/axe_damage.tres")
 
 ## Player speed upgrade resource
-var player_speed_resource: AbilityUpgrade = preload("res://resources/upgrades/player_speed.tres")
+const player_speed_resource: AbilityUpgrade = preload("res://resources/upgrades/player_speed.tres")
 
 #endregion
 
