@@ -89,3 +89,14 @@ func load_settings() -> void:
 
 	# Set saved window mode on launch
 	DisplayServer.window_set_mode(save_data["settings"]["WINDOW_MODE"])
+	# Set volume values on launch
+	_set_bus_volume("SFX", save_data["settings"]["SFX"])
+	_set_bus_volume("MUSIC", save_data["settings"]["MUSIC"])
+
+
+# Set volume
+func _set_bus_volume(bus_name: String, volume_lin: float) -> void:
+	var bus_index := AudioServer.get_bus_index(bus_name)
+	var bus_volume_db := linear_to_db(volume_lin)
+	
+	AudioServer.set_bus_volume_db(bus_index, bus_volume_db)
