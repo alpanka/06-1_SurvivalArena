@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsp8h3pfc4p6b"
-path="res://.godot/imported/vial_exp.png-29cf709976da4c5d7bf2cdcd91c66d33.ctex"
+uid="uid://em5ticnqk0vs"
+path="res://.godot/imported/vial_exp_large.png-e50109c402445037c92916016feea106.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/pickup/vial_exp.png"
-dest_files=["res://.godot/imported/vial_exp.png-29cf709976da4c5d7bf2cdcd91c66d33.ctex"]
+source_file="res://scenes/pickup/vial_exp_large/vial_exp_large.png"
+dest_files=["res://.godot/imported/vial_exp_large.png-e50109c402445037c92916016feea106.ctex"]
 
 [params]
 

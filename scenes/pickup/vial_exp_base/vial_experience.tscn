@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://6gepvso5wwf4"]
 
-[ext_resource type="Script" path="res://scenes/pickup/vial_experience.gd" id="1_71gsu"]
-[ext_resource type="Texture2D" uid="uid://dsp8h3pfc4p6b" path="res://scenes/pickup/vial_exp.png" id="1_es43s"]
+[ext_resource type="Script" path="res://scenes/pickup/vial_exp_base/vial_experience.gd" id="1_71gsu"]
+[ext_resource type="Texture2D" uid="uid://dsp8h3pfc4p6b" path="res://scenes/pickup/vial_exp_base/vial_exp.png" id="1_es43s"]
 [ext_resource type="PackedScene" uid="uid://cpoqi6xc52ilj" path="res://scenes/components/random_audio_player_component.tscn" id="3_c7dvk"]
 [ext_resource type="AudioStream" uid="uid://ccis2u4r8er5x" path="res://assets/audio/pick_up/impactGeneric_light_000.ogg" id="4_6jgiv"]
 [ext_resource type="AudioStream" uid="uid://bwy0o1rutsy03" path="res://assets/audio/pick_up/impactGeneric_light_001.ogg" id="5_lvvnv"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://di4adv6b2242f"]
+[gd_scene load_steps=16 format=4 uid="uid://di4adv6b2242f"]
 
 [ext_resource type="Script" path="res://scenes/levels/main_scene.gd" id="1_jgni3"]
 [ext_resource type="PackedScene" uid="uid://dxwbl8lyxg6jw" path="res://scenes/levels/game_camera.tscn" id="1_kqs5l"]
@@ -11,9 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://ddnhrtknrvfvn" path="res://scenes/managers/experience_manager.tscn" id="5_64v5b"]
 [ext_resource type="PackedScene" uid="uid://dwpf2r4nnpwtb" path="res://user_interface/vignette_screen.tscn" id="5_uitsx"]
 [ext_resource type="PackedScene" uid="uid://b08l87ocyujfy" path="res://scenes/managers/arena_time_manager.tscn" id="6_gd3xp"]
-[ext_resource type="PackedScene" uid="uid://6gepvso5wwf4" path="res://scenes/pickup/vial_experience.tscn" id="7_2ym2c"]
+[ext_resource type="PackedScene" uid="uid://6gepvso5wwf4" path="res://scenes/pickup/vial_exp_base/vial_experience.tscn" id="7_2ym2c"]
 [ext_resource type="PackedScene" uid="uid://ok0kd23rqmq4" path="res://scenes/managers/upgrade_manager.tscn" id="7_dm6d2"]
 [ext_resource type="PackedScene" uid="uid://qvsgwr7r347h" path="res://scenes/characters/enemy_spider/enemy_spider.tscn" id="8_3nkbk"]
+[ext_resource type="PackedScene" uid="uid://bwinuvyopbapx" path="res://scenes/characters/enemy_ogre/enemy_ogre.tscn" id="9_e7xjo"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_jgni3")
@@ -41,6 +42,7 @@ level_duration = 180.0
 
 [node name="EnemyManager" parent="Managers" node_paths=PackedStringArray("arena_timer_manager") instance=ExtResource("2_mn2oi")]
 arena_timer_manager = NodePath("../ArenaTimeManager")
+enemy_ogre = ExtResource("9_e7xjo")
 
 [node name="ExperienceManager" parent="Managers" instance=ExtResource("5_64v5b")]
 

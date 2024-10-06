@@ -139,8 +139,6 @@ health_component = NodePath("../HealthComponent")
 
 [node name="VelocityComponent" type="Node" parent="Managers"]
 script = ExtResource("5_qof22")
-max_speed = 50
-acceleration = 8.0
 
 [node name="HitFlashComponent" type="Node" parent="Managers" node_paths=PackedStringArray("health_component", "sprite")]
 script = ExtResource("6_48ou7")

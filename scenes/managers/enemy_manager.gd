@@ -3,10 +3,12 @@ extends Node
 @onready var spawn_timer: Timer = $SpawnTimer
 
 @export var arena_timer_manager: ArenaTimerManager
+@export var spawn_timeout: float = 1.0
+
 @export var enemy_spider: PackedScene
 @export var enemy_wizard: PackedScene
 @export var enemy_bat: PackedScene
-@export var spawn_timeout: float = 1.0
+@export var enemy_ogre: PackedScene
 
 const SPAWN_RADIUS: int = 350
 var player_node: CharacterBody2D
@@ -87,6 +89,8 @@ func _on_difficulty_increased(_difficulty) -> void:
 		enemy_table.add_item(enemy_wizard, 15)
 	elif _difficulty == 18: # 90 secs in
 		enemy_table.add_item(enemy_bat, 10)
+	elif _difficulty == 24: # 120 secs in
+		enemy_table.add_item(enemy_ogre, 1)
 	
 	# Increase spawn quantity every minute
 	if _difficulty % 12 == 0:

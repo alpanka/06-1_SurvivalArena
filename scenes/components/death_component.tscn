@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://cbyqf851d0x7c"]
+[gd_scene load_steps=15 format=3 uid="uid://cbyqf851d0x7c"]
 
 [ext_resource type="Script" path="res://scenes/components/death_component.gd" id="1_wdvdn"]
 [ext_resource type="PackedScene" uid="uid://cpoqi6xc52ilj" path="res://scenes/components/random_audio_player_component.tscn" id="2_ofxry"]
+[ext_resource type="Texture2D" uid="uid://ckkcy05yy8sy0" path="res://scenes/characters/enemy_ogre/ogre.png" id="2_qjjjf"]
 [ext_resource type="AudioStream" uid="uid://ly3ufeyrymk6" path="res://assets/audio/damaged_enemy/footstep_carpet_000.ogg" id="3_1og05"]
 [ext_resource type="AudioStream" uid="uid://5budsmq3v6ig" path="res://assets/audio/damaged_enemy/footstep_carpet_001.ogg" id="4_jhje8"]
 [ext_resource type="AudioStream" uid="uid://daxymwjeng4ra" path="res://assets/audio/damaged_enemy/footstep_carpet_002.ogg" id="5_3iuvf"]
@@ -89,6 +90,7 @@ libraries = {
 emitting = false
 amount = 1
 process_material = SubResource("ParticleProcessMaterial_iovaj")
+texture = ExtResource("2_qjjjf")
 lifetime = 0.75
 one_shot = true
 fixed_fps = 0
