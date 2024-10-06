@@ -24,7 +24,7 @@ func _on_timer_timeout() -> void:
 	# Fixed direction for all anvils
 	# Seperate them based on how many that'd be spawned
 	var spawn_direction := Vector2.RIGHT.rotated(randf_range(0, TAU))
-	var seperation_degree := deg_to_rad(360 / anvil_count)
+	var seperation_degree := deg_to_rad(360.0 / anvil_count)
 	var spawn_distance := randf_range(30, spawn_range)
 	
 	for i in anvil_count:

@@ -14,6 +14,7 @@ process_mode = 3
 layer = 2
 script = ExtResource("1_0uv4l")
 meta_upgrades = Array[ExtResource("2_ke4hv")]([ExtResource("3_vo7lw"), ExtResource("4_4gge6")])
+debug = true
 
 [node name="VignetteScreen" parent="." instance=ExtResource("4_td8gq")]
 

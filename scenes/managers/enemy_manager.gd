@@ -11,6 +11,7 @@ extends Node
 const SPAWN_RADIUS: int = 350
 var player_node: CharacterBody2D
 var enemy_table := WeightedTable.new()
+var number_to_spawn: int = 1
 
 
 func _ready() -> void:
@@ -69,11 +70,12 @@ func _on_spawn_timer_timeout() -> void:
 	spawn_timer.start()
 	
 	var enemy_scene: PackedScene = enemy_table.pick_item()
-	var enemy_instance: Node2D = enemy_scene.instantiate()
-	var layer_entities = get_tree().get_first_node_in_group("layer_entities")
-	
-	enemy_instance.global_position = _get_spawn_position()
-	layer_entities.add_child(enemy_instance)
+	for i in number_to_spawn: # Spawn multiple enemies
+		var enemy_instance: Node2D = enemy_scene.instantiate()
+		var layer_entities = get_tree().get_first_node_in_group("layer_entities")
+		
+		enemy_instance.global_position = _get_spawn_position()
+		layer_entities.add_child(enemy_instance)
 
 
 func _on_difficulty_increased(_difficulty) -> void:
@@ -85,3 +87,7 @@ func _on_difficulty_increased(_difficulty) -> void:
 		enemy_table.add_item(enemy_wizard, 15)
 	elif _difficulty == 18: # 90 secs in
 		enemy_table.add_item(enemy_bat, 10)
+	
+	# Increase spawn quantity every minute
+	if _difficulty % 12 == 0:
+		number_to_spawn += 1

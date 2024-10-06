@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://xgjh6gni1wg1"]
+[gd_scene load_steps=12 format=3 uid="uid://xgjh6gni1wg1"]
 
 [ext_resource type="PackedScene" uid="uid://cbyutpge8rxfj" path="res://scenes/components/hitbox_component.tscn" id="1_7uy2i"]
 [ext_resource type="Script" path="res://scenes/abilities/ability_anvil/ability_anvil.gd" id="1_16c3o"]
+[ext_resource type="Texture2D" uid="uid://dlj0cakqh5qqc" path="res://assets/particle.png" id="2_rb3wh"]
 [ext_resource type="Texture2D" uid="uid://c2aatb7q0kltd" path="res://scenes/abilities/ability_anvil/anvil.png" id="2_yq8t5"]
 
 [sub_resource type="Animation" id="Animation_wyh4a"]
@@ -42,10 +43,22 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ktbby"]
 resource_name = "rain_in"
-length = 0.4
+length = 0.6
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -54,7 +67,7 @@ tracks/0/path = NodePath("Sprite2D:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.15, 0.2, 0.4),
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.2, 0.6),
 "transitions": PackedFloat32Array(2, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, -100), Vector2(0, -7), Vector2(0, -11), Vector2(0, -7), Vector2(0, -7)]
@@ -78,7 +91,7 @@ tracks/2/path = NodePath("Sprite2D:scale")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.6),
 "transitions": PackedFloat32Array(0.517632, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
@@ -90,12 +103,24 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.4),
+"times": PackedFloat32Array(0.6),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"queue_free"
 }]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r67gk"]
@@ -103,6 +128,28 @@ _data = {
 "RESET": SubResource("Animation_wyh4a"),
 "rain_in": SubResource("Animation_ktbby")
 }
+
+[sub_resource type="Curve" id="Curve_fj85a"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.157277, 0.936388), 1.00081, 1.00081, 0, 0, Vector2(0.535211, 0.90169), -0.958038, -0.958038, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_if0pe"]
+curve = SubResource("Curve_fj85a")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4m28u"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 8.0
+angle_min = 1.07288e-05
+angle_max = 360.0
+spread = 180.0
+initial_velocity_min = 80.0
+initial_velocity_max = 180.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 360.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_if0pe")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mm8ul"]
 radius = 28.0
@@ -115,6 +162,17 @@ libraries = {
 "": SubResource("AnimationLibrary_r67gk")
 }
 autoplay = "rain_in"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_4m28u")
+texture = ExtResource("2_rb3wh")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.85
+fixed_fps = 0
+interpolate = false
 
 [node name="HitboxComponent" parent="." instance=ExtResource("1_7uy2i")]
 
