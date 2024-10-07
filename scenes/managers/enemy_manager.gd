@@ -31,7 +31,7 @@ func _initialize_enemy_manager() -> void:
 	arena_timer_manager.difficulty_increased.connect(_on_difficulty_increased)
 	
 	# Add enemies to start with
-	enemy_table.add_item(enemy_ogre, 10)
+	enemy_table.add_item(enemy_spider, 10)
 
 
 ## Create a ray cast and check if there is collision on the planned spawn location
