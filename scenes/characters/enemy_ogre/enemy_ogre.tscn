@@ -113,7 +113,7 @@ sprite = NodePath("../../Visuals/Sprite2D")
 health_init = 100.0
 
 [node name="VialDropComponent" parent="Managers" node_paths=PackedStringArray("health_component") instance=ExtResource("10_4c0ld")]
-drop_chance = 0.4
+drop_chance = 1.0
 vial_scene = ExtResource("11_38amn")
 health_component = NodePath("../HealthComponent")
 

@@ -6,7 +6,7 @@ extends Node2D
 @onready var visuals: Node2D = $Visuals
 
 
-@export var experience: float = 1.0
+@export var experience: float = 10.0
 
 var player_node: CharacterBody2D
 
